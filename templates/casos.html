@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Casos de Uso - ML Supervisado{% endblock %}
+
+{% block content %}
+<section class="cases-header">
+    <div class="container">
+        <h1>Casos de Uso Relevantes</h1>
+        <p>Investigación de aplicaciones exitosas de Machine Learning Supervisado en distintas industrias</p>
+    </div>
+</section>
+
+<section class="cases-container">
+    <div class="container">
+        {% for caso in casos_uso %}
+        <div class="case-card" id="{{ caso.industria|lower }}">
+            <div class="case-header">
+                <h2>{{ caso.titulo }}</h2>
+                <span class="industry-tag">{{ caso.industria }}</span>
+            </div>
+            <div class="case-content">
+                <div class="case-info">
+                    <h3>Problema resuelto</h3>
+                    <p>{{ caso.problema }}</p>
+                    
+                    <h3>Algoritmo utilizado</h3>
+                    <p>{{ caso.algoritmo }}</p>
+                    
+                    <h3>Beneficios obtenidos</h3>
+                    <p>{{ caso.beneficios }}</p>
+                    
+                    <h3>Empresa/proyecto</h3>
+                    <p>{{ caso.empresa }}</p>
+                </div>
+                <div class="case-references">
+                    <h3>Referencias APA</h3>
+                    <p>{{ caso.referencias }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
