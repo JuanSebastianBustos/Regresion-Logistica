@@ -5,15 +5,15 @@ app = Flask(__name__)
 # Datos de ejemplo para los casos de uso
 casos_uso = [
     {
-        'id': 'desarrollo',
-        'titulo': 'Detección de fraudes en transacciones financieras',
-        'industria': 'Tecnología',
-        'problema': 'Identificar transacciones fraudulentas en tiempo real',
-        'algoritmo': 'Random Forest',
-        'beneficios': 'Reducción del 85% en fraudes no detectados',
-        'empresa': 'Visa Inc.',
-        'referencias': 'Smith, J. (2022). Machine Learning in Finance. Journal of Financial Technology, 15(2), 112-125.',
-    },
+        'id': 'entretenimiento',
+        'titulo': 'Predicción de Abandono de Clientes (Churn) en Netflix',
+        'industria': 'Streaming y Entretenimiento',
+        'problema': 'El principal problema que se resuelve es la pérdida de ingresos debido a la cancelación de suscripciones. Adquirir un nuevo cliente es mucho más costoso que retener a uno existente. Por lo tanto, las empresas como Netflix necesitan identificar de manera proactiva a los usuarios que probablemente cancelarán su servicio (esto se conoce como "churn"). Al predecir quiénes están en riesgo, la empresa puede implementar estrategias de retención dirigidas para evitar que el cliente se vaya.',
+        'algoritmo': 'Este es un problema de clasificación binaria (el cliente cancelará o no). Los algoritmos más comunes incluyen:\n- Regresión Logística\n- Máquinas de Soporte Vectorial (SVM)\n- Bosques Aleatorios (Random Forest), uno de los más efectivos.\nLos modelos se entrenan con datos históricos de los usuarios, como la frecuencia de inicio de sesión, el tiempo de visualización, los géneros preferidos y el historial de pagos.',
+        'beneficios': '- Reducción de la Tasa de Abandono: Permite actuar antes de que el cliente se vaya, mejorando la retención.\n- Aumento de Ingresos: Retener más clientes asegura un flujo de ingresos más estable.\n- Optimización del Marketing: Las campañas de retención se dirigen solo a los clientes en riesgo, ahorrando costos.\n- Mejora de la Experiencia del Cliente: Las acciones de retención, como recomendaciones personalizadas, mejoran la satisfacción.',
+        'empresa': 'Netflix es un ejemplo paradigmático. La compañía utiliza masivamente los datos de sus usuarios para alimentar sus algoritmos de recomendación y, de forma crucial, sus modelos de predicción de abandono para sostener su modelo de negocio.',
+        'referencias': 'Ahmed, A. (2022). *Predicting Customer Churn in Python*. DataCamp. Recuperado de https://www.datacamp.com/tutorial/predicting-customer-churn-in-python\nJain, A. (2023, 10 de octubre). *How Netflix Uses Data Science to Enhance User Experience and Drive Business Growth*. Medium. Recuperado de https://medium.com/@anushka.jain992/how-netflix-uses-data-science-to-enhance-user-experience-and-drive-business-growth-4852c486411a'
+   },
     {
         'id': 'salud',
         'titulo': 'Google/Verily – Detección de Retinopatía Diabética',
@@ -59,9 +59,9 @@ casos_uso = [
                         'IBM. ¿Qué es el deep learning?: https://www.ibm.com/es-es/think/topics/deep-learning\n'
                         'BuiltIn. Modelos de conjunto ¿Qué son y cuándo utilizarlos?: https://builtin-com.translate.goog/machine-learning/ensemble-model?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=wa\n'
                         'Wikipedia. PayPal: https://es.wikipedia.org/wiki/PayPal\n'
-                        'PayPal. History & facts: https://about.pypl.com/who-we-are/history-and-facts/default.aspx\n'
-                        'OpenAI ChatGPT. (4 de septiembre de 2025). Respuesta a consulta sobre casos de éxito en Machine Learning supervisado [Comunicación personal].',
-    }
+                        'PayPal. History & facts: https://about.pypl.com/who-we-are/history-and-facts/default.aspx\n',
+    },
+    
 ]
 
 @app.route('/')
