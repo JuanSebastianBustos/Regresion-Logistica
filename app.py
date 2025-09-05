@@ -15,15 +15,15 @@ casos_uso = [
         'referencias': 'Smith, J. (2022). Machine Learning in Finance. Journal of Financial Technology, 15(2), 112-125.',
     },
     {
-        'id': 'salud',
-        'titulo': 'Diagnóstico médico asistido por IA',
+     'id': 'salud',
+        'titulo': 'Google/Verily – Detección de Retinopatía Diabética',
         'industria': 'Salud',
-        'problema': 'Detección temprana de cáncer de mama',
-        'algoritmo': 'Redes Neuronales Convolucionales',
-        'beneficios': 'Precisión del 94% en detección temprana',
-        'empresa': 'Google Health',
-        'referencias': 'Johnson, L., & Chen, W. (2021). AI for Medical Imaging. Healthcare Innovation Review, 8(3), 45-58.',
-    },
+        'problema': 'La retinopatia diabetica es una de las principales causas de cegera evitable en el mundo. millones de pacientescon diabetes requieren exámenes oftalmologico regulares, pero existe una escasez global de especialistas que dificulta la deteccion temprana, sobre todo en zonas rurales o con pocos recursos medicos.',
+        'algoritmo': 'Gloogle Research y Verily desarrollaron un sistema de redes neuronales convolucionales profundas (CNN) entrenado con mas de 120,000 imagenes de fondo de ojo, cuidadosamente etiquetadas por oftamologos certificados.El modelo clasifica las severidad de la retinopatia diabetica y el edema macular diabetico de forma automatica.',
+        'beneficios': 'El algoritmo logró una sensibilidad de hasta 97% y una especificidad del 93%, comparable al desempeño de oftalmólogos expertos. Gracias a esto, se ha implementado en hospitales de India y Tailandia, logrando tamizajes masivos y diagnósticos tempranos, reduciendo el riesgo de ceguera y permitiendo que los especialistas se concentren en los casos más graves.',
+        'empresa': 'Google Research y Verily Life Sciences, en colaboración con el Aravind Eye Hospital (India) y el Rajavithi Hospital (Tailandia).',
+        'referencias': 'Google Research Asia-Pacific. (2024, octubre 17). Cómo la IA está haciendo que la atención para salvar la vista sea más accesible en entornos con recursos limitados. *Google Blog*. https://blog.google/around-the-globe/google-asia/arda-diabetic-retinopathy-india-thailand/'+'Aravind Eye Hospitals, Google LLC, & Verily Life Sciences LLC. (2023). Rendimiento de un algoritmo de aprendizaje profundo para la retinopatía diabética en India. *PMC*. https://pmc.ncbi.nlm.nih.gov/articles/PMC11923701/'+'Andi, H. (2019, febrero 27). Google, Verily utilizar el aprendizaje automático para detectar la enfermedad ocular diabética. *Fierce Healthcare*. https://www.fiercehealthcare.com/tech/google-verily-develop-ai-tool-to-screen-for-diabetic-eye-disease'
+     },
     {
         'id': 'entretenimiento',
         'titulo': 'Sistemas de recomendación de contenido',
