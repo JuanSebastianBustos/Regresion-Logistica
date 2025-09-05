@@ -13,21 +13,21 @@
         <div class="case-content">
             <div class="case-info">
                 <h2>Problema resuelto</h2>
-                <p>{{ caso.problema }}</p>
+                <p>{{ caso.problema | replace('\n', '<br>') | safe }}</p>
                 
                 <h2>Algoritmo utilizado</h2>
-                <p>{{ caso.algoritmo }}</p>
+                <p>{{ caso.algoritmo | replace('\n', '<br>') | safe }}</p>
                 
                 <h2>Beneficios obtenidos</h2>
-                <p>{{ caso.beneficios }}</p>
+                <p>{{ caso.beneficios | replace('\n', '<br>') | safe }}</p>
                 
                 <h2>Empresa/proyecto</h2>
-                <p>{{ caso.empresa }}</p>
+                <p>{{ caso.empresa | replace('\n', '<br>') | safe }}</p>
             </div>
             
             <div class="case-references">
                 <h2>Referencias</h2>
-                <p>{{ caso.referencias }}</p>
+                <p>{{ caso.referencias | replace('\n', '<br>') | safe }}</p>
             </div>
         </div>
     </div>

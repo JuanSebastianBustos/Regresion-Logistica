@@ -38,14 +38,29 @@ casos_uso = [
         'Vanegas-Ayala, S. C., Leal-Lara, D. D., & Barón-Velandia, J. (2022). Predicción rendimiento estudiantes pruebas Saber Pro en pandemia junto con las características socioeconómicas. Revista TIA — Tecnología, Investigación y Academia, 9(2), 5-16. Recuperado de https://revistas.udistrital.edu.co/index.php/tia/article/download/19446/18260/116618.',
     },
     {
-        'id': 'retail',
-        'titulo': 'Predictión de demanda en retail',
-        'industria': 'Comercio minorista',
-        'problema': 'Optimización de inventario y almacenamiento',
-        'algoritmo': 'Regresión lineal múltiple',
-        'beneficios': 'Reducción del 20% en costos de inventario',
-        'empresa': 'Amazon',
-        'referencias': 'Wilson, A. (2023). Predictive Analytics in Retail. Supply Chain Management, 19(1), 33-47.',
+        'id': 'servicios',
+        'titulo': 'Detección de fraude en pagos (PayPal)',
+        'industria': 'Servicios financieros',
+        'problema': 'El fraude en transacciones digitales representa pérdidas millonaria para plataforma de pago y usuarios. Los sistemas tradicionales, basados en reglas fijas, no lograban adaptarse a la rapidez con la que evolucionan los patrones de fraude. Estos ocasionaba un gran número de falsos positivos, afectando la confianza de los clientes y aumentando los costos operativos.',
+        'algoritmo': 'PayPal utiliza modelos de clasificación supervisada entrenados con millones de transacciones etiquetadas como "fraudulentas" o "legítimas". Entre los algoritmos aplicados destacan:\n'
+                    '- Gradient Boosting (para mejorar precisión en datos desbalanceados).\n'
+                    '- Redes neuronales profundas (Deep Learning) (para detectar patrones complejos y no lineales).\n'
+                    '- Ensembles de modelos (combinación de varios clasificadores para aumentar la robustez).\n'
+                    'Estos modelos permiten la detección en tiempo real de operaciones sospechosas, adaptándose dinámicamente a las nuevas estrategias de fraude.',
+        'beneficios': '- Mayor precisión en la detección de fraude, reduciendo falsos positivos.\n'
+                    '- Prevención en tiempo real, protegiendo tanto a la empresa como a sus clientes.\n'
+                    '- Optimización de recursos, al reducir revisiones manuales.\n'
+                    '- Mejor experiencia de usuario, ya que menos transacciones legítimas son bloqueadas.',
+        'empresa': 'PayPal Holdings, Inc. es una de las plataformas de pagos digitales más grandes del mundo, fundada en 1998 y con más de 430 millones de usuarios activos en 200 países. La compañía ha sido pionera en la integración de Machine Learning en sus sistemas de seguridad, conslidándose como un referente mundial en prevención de fraude financiero.',
+        'referencias': 'Algotive. 5 ejemplos de Machine Learning que usas en tu día a día y no lo sabías:https://www.algotive.ai/es-mx/blog/5-ejemplos-de-machine-learning-que-usas-en-tu-dia-a-dia-y-no-lo-sabias#PayPal\n'
+                        'Stripe. Cómo funciona el machine learning para prevenir el fraude en pagos: https://stripe.com/es/resources/more/how-machine-learning-works-for-payment-fraud-detection-and-prevention?utm_source=chatgpt.com\n'
+                        'SEON. Machine Learning para detectar fraude: https://seon.io/es/recursos/machine-learning-para-detectar-fraude/?utm_source=chatgpt.com\n'
+                        'InteractiveChaos.Gradient Boosting: https://interactivechaos.com/es/manual/tutorial-de-machine-learning/gradient-boosting\n'
+                        'IBM. ¿Qué es el deep learning?: https://www.ibm.com/es-es/think/topics/deep-learning\n'
+                        'BuiltIn. Modelos de conjunto ¿Qué son y cuándo utilizarlos?: https://builtin-com.translate.goog/machine-learning/ensemble-model?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=wa\n'
+                        'Wikipedia. PayPal: https://es.wikipedia.org/wiki/PayPal\n'
+                        'PayPal. History & facts: https://about.pypl.com/who-we-are/history-and-facts/default.aspx\n'
+                        'OpenAI ChatGPT. (4 de septiembre de 2025). Respuesta a consulta sobre casos de éxito en Machine Learning supervisado [Comunicación personal].',
     }
 ]
 
