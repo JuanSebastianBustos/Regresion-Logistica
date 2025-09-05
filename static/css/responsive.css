@@ -93,3 +93,28 @@
         font-size: 1.3rem;
     }
 }
+
+@media (max-width: 768px) {
+    .case-header h1 {
+        font-size: 2rem;
+    }
+    
+    .case-info h2, .case-references h2 {
+        font-size: 1.5rem;
+    }
+    
+    .btn-next {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .case-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .case-info p, .case-references p {
+        font-size: 1rem;
+    }
+}

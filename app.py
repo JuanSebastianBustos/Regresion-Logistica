@@ -2,17 +2,17 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-# Datos de ejemplo para los casos de uso (debes reemplazarlos con tu investigación real)
+# Datos de ejemplo para los casos de uso
 casos_uso = [
     {
-        'id': 'finanzas',
+        'id': 'desarrollo',
         'titulo': 'Detección de fraudes en transacciones financieras',
-        'industria': 'Finanzas',
+        'industria': 'Tecnología',
         'problema': 'Identificar transacciones fraudulentas en tiempo real',
         'algoritmo': 'Random Forest',
         'beneficios': 'Reducción del 85% en fraudes no detectados',
         'empresa': 'Visa Inc.',
-        'referencias': 'Smith, J. (2022). Machine Learning in Finance. Journal of Financial Technology, 15(2), 112-125.'
+        'referencias': 'Smith, J. (2022). Machine Learning in Finance. Journal of Financial Technology, 15(2), 112-125.',
     },
     {
         'id': 'salud',
@@ -22,7 +22,7 @@ casos_uso = [
         'algoritmo': 'Redes Neuronales Convolucionales',
         'beneficios': 'Precisión del 94% en detección temprana',
         'empresa': 'Google Health',
-        'referencias': 'Johnson, L., & Chen, W. (2021). AI for Medical Imaging. Healthcare Innovation Review, 8(3), 45-58.'
+        'referencias': 'Johnson, L., & Chen, W. (2021). AI for Medical Imaging. Healthcare Innovation Review, 8(3), 45-58.',
     },
     {
         'id': 'entretenimiento',
@@ -32,7 +32,7 @@ casos_uso = [
         'algoritmo': 'Filtrado colaborativo',
         'beneficios': 'Incremento del 30% en tiempo de visualización',
         'empresa': 'Netflix',
-        'referencias': 'Robinson, M. (2020). Algorithmic Recommendations. Digital Media Journal, 12(4), 78-92.'
+        'referencias': 'Robinson, M. (2020). Algorithmic Recommendations. Digital Media Journal, 12(4), 78-92.',
     },
     {
         'id': 'retail',
@@ -42,31 +42,33 @@ casos_uso = [
         'algoritmo': 'Regresión lineal múltiple',
         'beneficios': 'Reducción del 20% en costos de inventario',
         'empresa': 'Amazon',
-        'referencias': 'Wilson, A. (2023). Predictive Analytics in Retail. Supply Chain Management, 19(1), 33-47.'
+        'referencias': 'Wilson, A. (2023). Predictive Analytics in Retail. Supply Chain Management, 19(1), 33-47.',
     }
 ]
 
 @app.route('/')
 def index():
-    """Ruta para la página de inicio"""
     return render_template('index.html')
 
-@app.route('/casos')
-def casos():
-    """Ruta para la página de casos de uso"""
-    return render_template('casos.html', casos_uso=casos_uso)
+@app.route('/caso1')
+def caso1():
+    caso = casos_uso[0]  # Primer caso
+    return render_template('caso1.html', caso=caso)
 
-@app.route('/caso/<string:caso_id>')
-def caso_detalle(caso_id):
-    """Ruta para ver el detalle de un caso específico"""
-    # Buscar el caso por su ID
-    caso = next((item for item in casos_uso if item['id'] == caso_id), None)
-    
-    if caso:
-        return render_template('caso_detalle.html', caso=caso)
-    else:
-        # Si no encuentra el caso, redirigir a la página de casos
-        return render_template('casos.html', casos_uso=casos_uso)
+@app.route('/caso2')
+def caso2():
+    caso = casos_uso[1]  # Segundo caso
+    return render_template('caso2.html', caso=caso)
+
+@app.route('/caso3')
+def caso3():
+    caso = casos_uso[2]  # Tercer caso
+    return render_template('caso3.html', caso=caso)
+
+@app.route('/caso4')
+def caso4():
+    caso = casos_uso[3]  # Cuarto caso
+    return render_template('caso4.html', caso=caso)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -324,3 +324,91 @@ footer {
 footer p {
     margin-bottom: 0.5rem;
 }
+
+/* Estilos para página de caso individual */
+.case-detail {
+    padding: 3rem 0;
+}
+
+.case-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.case-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.case-content {
+    margin-bottom: 3rem;
+}
+
+.case-image {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.case-image img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.image-caption {
+    font-style: italic;
+    color: #666;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+.case-info h2, .case-references h2 {
+    color: var(--primary-color);
+    margin: 1.5rem 0 0.5rem;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+}
+
+.case-info p, .case-references p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.case-references {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.case-navigation {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.btn-next {
+    display: inline-flex;
+    align-items: center;
+    background: var(--secondary-color);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-next:hover {
+    background: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.btn-next i {
+    margin-left: 0.5rem;
+    transition: transform 0.3s;
+}
+
+.btn-next:hover i {
+    transform: translateX(5px);
+}

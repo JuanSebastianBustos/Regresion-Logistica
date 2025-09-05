@@ -2,10 +2,18 @@
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
+    const caso1Link = document.querySelector('/caso1');
+    const caso2Link = document.querySelector('/caso2');
+    const caso3Link = document.querySelector('/caso1');
+    const caso4Link = document.querySelector('/caso4');
     
     if (hamburger) {
         hamburger.addEventListener('click', function() {
             navMenu.classList.toggle('active');
+            caso1Link.classList.toggle('active');
+            caso2Link.classList.toggle('active');
+            caso3Link.classList.toggle('active');
+            caso4Link.classList.toggle('active');
         });
     }
     
