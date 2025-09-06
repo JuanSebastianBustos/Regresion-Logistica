@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}{{ caso.titulo }} - ML Supervisado{% endblock %}
+
+{% block content %}
+<section class="case-detail">
+    <div class="container">
+        <div class="case-header">
+            <h1>{{ caso.titulo }}</h1>
+            <span class="industry-tag">{{ caso.industria }}</span>
+        </div>
+        
+        <div class="case-content">
+            <div class="case-info">
+                <h2>Problema resuelto</h2>
+                <p>{{ caso.problema | replace('\n', '<br>') | safe }}</p>
+                
+                <h2>Algoritmo utilizado</h2>
+                <p>{{ caso.algoritmo | replace('\n', '<br>') | safe }}</p>
+                
+                <h2>Beneficios obtenidos</h2>
+                <p>{{ caso.beneficios | replace('\n', '<br>') | safe }}</p>
+                
+                <h2>Empresa/proyecto</h2>
+                <p>{{ caso.empresa | replace('\n', '<br>') | safe }}</p>
+            </div>
+            
+            <div class="case-references">
+                <h2>Referencias</h2>
+                <p>{{ caso.referencias | replace('\n', '<br>') | safe }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
