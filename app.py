@@ -103,20 +103,28 @@ def rl_conceptos():
 
 @app.route('/rl_practico', methods=['GET', 'POST'])
 def rl_practico():
-    # 1. Generar el gráfico (se ejecuta siempre)
+    # 1. Generar el gráfico (siempre)
     plot_url = RegresionLineal.PlotGraph()
     
     # 2. Inicializar variables para el resultado de la predicción
     result = None
-    hours = None
+    autos = None
+    transporte = None
 
-    # 3. Lógica para manejar el formulario (solo se ejecuta si el método es POST)
+    # 3. Lógica para manejar el formulario (POST)
     if request.method == 'POST':
-        hours = float(request.form['hours'])
-        result = RegresionLineal.CalculateGrade(hours)
+        autos = float(request.form['autos'])
+        transporte = float(request.form['transporte'])
+        result = RegresionLineal.PredecirContaminacion(autos, transporte)
         
-    # 4. Renderizar la plantilla pasando todas las variables
-    return render_template('rl_practico.html', plot_url=plot_url, result=result, hours=hours)
+    # 4. Renderizar plantilla con variables
+    return render_template(
+        'rl_practico.html',
+        plot_url=plot_url,
+        result=result,
+        autos=autos,
+        transporte=transporte
+    )
 
 if __name__ == '__main__':
     app.run(debug=True)

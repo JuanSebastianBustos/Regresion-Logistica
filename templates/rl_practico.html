@@ -9,10 +9,16 @@
 
         <div class="dataset-info">
             <h2>Dataset de entrenamiento</h2>
-            <p>Se utilizó un dataset que relaciona las horas de estudio con la calificación obtenida en un examen. El modelo de regresión lineal se entrenó con estos datos para predecir la calificación esperada basándose en las horas de estudio.</p>
+            <p>
+                Se utilizó un dataset que relaciona el <strong>número de autos</strong> y el 
+                <strong>uso de transporte público</strong> con el 
+                <strong>nivel de contaminación (µg/m³)</strong>. 
+                El modelo de regresión lineal se entrenó con estos datos para predecir 
+                el nivel esperado de contaminación en función de estas variables.
+            </p>
             
             <div class="plot-container">
-                <img src="data:image/png;base64,{{ plot_url }}" alt="Gráfico de regresión lineal">
+                <img src="data:image/png;base64,{{ plot_url }}" alt="Gráfico de regresión lineal múltiple">
             </div>
         </div>
 
@@ -20,16 +26,25 @@
             <h2>Realizar predicción</h2>
             <form action="{{ url_for('rl_practico') }}" method="post">
                 <div class="form-group">
-                    <label for="hours">Horas de Estudio:</label>
-                    <input type="number" step="0.5" name="hours" required>
+                    <label for="autos">Número de Autos:</label>
+                    <input type="number" step="1" name="autos" required>
                 </div>
-                <button type="submit" class="btn">Predecir Calificación</button>
+                <div class="form-group">
+                    <label for="transporte">Uso de Transporte Público (%):</label>
+                    <input type="number" step="1" min="0" max="100" name="transporte" required>
+                </div>
+                <button type="submit" class="btn">Predecir Contaminación</button>
             </form>
             
             {% if result is not none %}
             <div class="prediction-result">
                 <h3>Resultado de la predicción</h3>
-                <p>Para <strong>{{ hours }}</strong> horas de estudio, la calificación estimada es: <strong>{{ result[0] }}</strong></p>
+                <p>
+                    Para <strong>{{ autos }}</strong> autos y un uso de transporte público de 
+                    <strong>{{ transporte }}%</strong>, 
+                    el nivel estimado de contaminación es: 
+                    <strong>{{ result[0] }} µg/m³</strong>.
+                </p>
             </div>
             {% endif %}
         </div>
