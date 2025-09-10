@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Regresión Lineal - ML Supervisado{% endblock %}
+
+{% block content %}
+<section class="rl-main">
+    <div class="container">
+        <h1>Regresión Lineal</h1>
+        <div class="rl-intro">
+            <p>La regresión lineal es un método estadístico que permite modelar la relación entre una variable dependiente y una o más variables independientes. Es una técnica fundamental en el machine learning supervisado.</p>
+            
+            <div class="rl-options">
+                <a href="{{ url_for('rl_conceptos') }}" class="btn">Conceptos Básicos</a>
+                <a href="{{ url_for('rl_practico') }}" class="btn">Ejercicio Práctico</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

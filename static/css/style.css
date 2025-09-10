@@ -29,6 +29,8 @@ body {
     padding: 0 15px;
 }
 
+
+
 /* Encabezado */
 header {
     background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
@@ -313,6 +315,8 @@ nav {
     margin-top: 1.5rem;
 }
 
+
+
 /* Footer */
 footer {
     background: var(--dark-color);
@@ -397,6 +401,7 @@ footer p {
     text-decoration: none;
     font-weight: bold;
     transition: all 0.3s;
+    margin-right: 1rem;
 }
 
 .btn-next:hover {
@@ -411,4 +416,147 @@ footer p {
 
 .btn-next:hover i {
     transform: translateX(5px);
+}
+
+/* Estilos adicionales para las nuevas secciones */
+
+.logo-main {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo-main i {
+    font-size: 4rem;
+    color: var(--secondary-color);
+}
+
+.logo-main h1 {
+    font-size: 2.5rem;
+    color: var(--dark-color);
+}
+
+.logo-main span {
+    color: var(--secondary-color);
+}
+
+.cases-overview {
+    padding: 3rem 0;
+    background: white;
+}
+
+.overview-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+}
+
+.overview-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.rl-main {
+    padding: 3rem 0;
+}
+
+.rl-main .container h1 {
+    text-align: center;
+}
+
+.rl-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.rl-options {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.rl-conceptos {
+    padding: 3rem 0;
+}
+
+.concepto-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.concepto-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.formula {
+    font-family: 'Courier New', monospace;
+    background: #2d2d2d;
+    color: #f8f8f2;
+    padding: 1rem;
+    border-radius: 4px;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.references {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.rl-practico {
+    padding: 3rem 0;
+}
+
+.dataset-info {
+    margin-bottom: 3rem;
+}
+
+.plot-container {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.plot-container img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.prediction-form {
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.prediction-result {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--light-color);
+    border-radius: 8px;
+    text-align: center;
 }

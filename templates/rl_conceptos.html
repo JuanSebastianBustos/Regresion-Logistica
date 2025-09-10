@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Conceptos Básicos - Regresión Lineal{% endblock %}
+
+{% block content %}
+<section class="rl-conceptos">
+    <div class="container">
+        <h1>Conceptos Básicos de Regresión Lineal</h1>
+        
+        <div class="concepto-section">
+            <h2>Definición</h2>
+            <p>La regresión lineal es un método estadístico que permite modelar la relación entre una variable dependiente (Y) y una o más variables independientes (X). El objetivo es encontrar una función lineal que mejor describa esta relación.</p>
+            <p>En su forma más simple, la regresión lineal simple modela la relación entre dos variables mediante una línea recta, con la ecuación:</p>
+            <p class="formula">Y = β₀ + β₁X + ε</p>
+            <p>Donde:</p>
+            <ul>
+                <li>Y es la variable dependiente</li>
+                <li>X es la variable independiente</li>
+                <li>β₀ es el intercepto</li>
+                <li>β₁ es la pendiente</li>
+                <li>ε es el término de error</li>
+            </ul>
+        </div>
+
+        <div class="concepto-section">
+            <h2>Supuestos habituales</h2>
+            <ul>
+                <li><strong>Linealidad:</strong> La relación entre las variables independientes y dependientes es lineal.</li>
+                <li><strong>Independencia:</strong> Las observaciones son independientes entre sí.</li>
+                <li><strong>Homocedasticidad:</strong> La varianza de los errores es constante a lo largo de todos los valores de X.</li>
+                <li><strong>Normalidad:</strong> Los errores se distribuyen normalmente.</li>
+                <li><strong>No multicolinealidad:</strong> En regresión múltiple, las variables independientes no están altamente correlacionadas entre sí.</li>
+            </ul>
+        </div>
+
+        <div class="references">
+            <h2>Referencias APA</h2>
+            <p>James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). An Introduction to Statistical Learning: with Applications in R. Springer.</p>
+            <p>Hastie, T., Tibshirani, R., & Friedman, J. (2009). The Elements of Statistical Learning: Data Mining, Inference, and Prediction. Springer.</p>
+            <p>Kutner, M. H., Nachtsheim, C. J., Neter, J., & Li, W. (2005). Applied Linear Statistical Models. McGraw-Hill Irwin.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

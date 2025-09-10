@@ -1,4 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+import RegresionLineal
+
 
 app = Flask(__name__)
 
@@ -61,32 +63,60 @@ casos_uso = [
                         'Wikipedia. PayPal: https://es.wikipedia.org/wiki/PayPal\n'
                         'PayPal. History & facts: https://about.pypl.com/who-we-are/history-and-facts/default.aspx\n',
     },
-    
 ]
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
+@app.route('/casos')
+def casos():
+    return render_template('casos.html')
+
 @app.route('/caso1')
 def caso1():
-    caso = casos_uso[0]  # Primer caso
+    caso = casos_uso[0]
     return render_template('caso1.html', caso=caso)
 
 @app.route('/caso2')
 def caso2():
-    caso = casos_uso[1]  # Segundo caso
+    caso = casos_uso[1]
     return render_template('caso2.html', caso=caso)
 
 @app.route('/caso3')
 def caso3():
-    caso = casos_uso[2]  # Tercer caso
+    caso = casos_uso[2]
     return render_template('caso3.html', caso=caso)
 
 @app.route('/caso4')
 def caso4():
-    caso = casos_uso[3]  # Cuarto caso
+    caso = casos_uso[3]
     return render_template('caso4.html', caso=caso)
+
+@app.route('/rl')
+def rl():
+    return render_template('rl_index.html')
+
+@app.route('/rl_conceptos')
+def rl_conceptos():
+    return render_template('rl_conceptos.html')
+
+@app.route('/rl_practico', methods=['GET', 'POST'])
+def rl_practico():
+    # 1. Generar el gráfico (se ejecuta siempre)
+    plot_url = RegresionLineal.PlotGraph()
+    
+    # 2. Inicializar variables para el resultado de la predicción
+    result = None
+    hours = None
+
+    # 3. Lógica para manejar el formulario (solo se ejecuta si el método es POST)
+    if request.method == 'POST':
+        hours = float(request.form['hours'])
+        result = RegresionLineal.CalculateGrade(hours)
+        
+    # 4. Renderizar la plantilla pasando todas las variables
+    return render_template('rl_practico.html', plot_url=plot_url, result=result, hours=hours)
 
 if __name__ == '__main__':
     app.run(debug=True)
