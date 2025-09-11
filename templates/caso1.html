@@ -30,6 +30,12 @@
                 <p>{{ caso.referencias }}</p>
             </div>
         </div>
+        <div class="case-navigation">
+            <a href="{{ url_for('caso2') }}" class="btn-next">
+                <span>Siguiente caso</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
     </div>
 </section>
 {% endblock %}

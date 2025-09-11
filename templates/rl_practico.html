@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Ejercicio Práctico - Regresión Lineal{% endblock %}
+
+{% block content %}
+<section class="rl-practico">
+    <div class="container">
+        <h1>Ejercicio Práctico de Regresión Lineal</h1>
+
+        <div class="dataset-info">
+            <h2>Dataset de entrenamiento</h2>
+            <p>
+                Se utilizó un dataset que relaciona el <strong>número de autos</strong> y el 
+                <strong>uso de transporte público</strong> con el 
+                <strong>nivel de contaminación (µg/m³)</strong>. 
+                El modelo de regresión lineal se entrenó con estos datos para predecir 
+                el nivel esperado de contaminación en función de estas variables.
+            </p>
+            
+            <div class="plot-container">
+                <img src="data:image/png;base64,{{ plot_url }}" alt="Gráfico de regresión lineal múltiple">
+            </div>
+        </div>
+
+        <div class="prediction-form">
+            <h2>Realizar predicción</h2>
+            <form action="{{ url_for('rl_practico') }}" method="post">
+                <div class="form-group">
+                    <label for="autos">Número de Autos:</label>
+                    <input type="number" step="1" name="autos" required>
+                </div>
+                <div class="form-group">
+                    <label for="transporte">Uso de Transporte Público (%):</label>
+                    <input type="number" step="1" min="0" max="100" name="transporte" required>
+                </div>
+                <button type="submit" class="btn">Predecir Contaminación</button>
+            </form>
+            
+            {% if result is not none %}
+            <div class="prediction-result">
+                <h3>Resultado de la predicción</h3>
+                <p>
+                    Para <strong>{{ autos }}</strong> autos y un uso de transporte público de 
+                    <strong>{{ transporte }}%</strong>, 
+                    el nivel estimado de contaminación es: 
+                    <strong>{{ result[0] }} µg/m³</strong>.
+                </p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

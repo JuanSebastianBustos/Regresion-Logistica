@@ -30,6 +30,12 @@
                 <p>{{ caso.referencias | replace('\n', '<br>') | safe }}</p>
             </div>
         </div>
+        <div class="case-navigation">
+            <a href="{{ url_for('index') }}" class="btn-next">
+                <span>Volver</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
     </div>
 </section>
 {% endblock %}

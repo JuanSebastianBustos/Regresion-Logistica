@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Casos de Uso - ML Supervisado{% endblock %}
+
+{% block content %}
+<section class="cases-header">
+    <div class="container">
+        <h1>Casos de Uso Relevantes</h1>
+        <p>Investigación de aplicaciones exitosas de Machine Learning Supervisado en distintas industrias</p>
+    </div>
+</section>
+
+<section class="cases-overview">
+    <div class="container">
+        <div class="overview-stats">
+            <div class="stat">
+                <h3>4</h3>
+                <p>Casos de estudio</p>
+            </div>
+            <div class="stat">
+                <h3>4</h3>
+                <p>Industrias</p>
+            </div>
+            <div class="stat">
+                <h3>4</h3>
+                <p>Algoritmos aplicados</p>
+            </div>
+        </div>
+        
+        <div class="overview-content">
+            <p>A continuación se presentan cuatro casos de uso donde el Machine Learning Supervisado ha demostrado un impacto significativo en diferentes industrias. Cada caso detalla el problema resuelto, el algoritmo utilizado, los beneficios obtenidos y las empresas involucradas.</p>
+            <div class="case-navigation">
+            <a href="{{ url_for('caso1') }}" class="btn-next">
+                <span>Primer Caso</span>
+            </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
