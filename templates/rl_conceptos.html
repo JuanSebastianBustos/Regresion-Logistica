@@ -9,7 +9,8 @@
         
         <div class="concepto-section">
             <h2>Definición</h2>
-            <p>La regresión lineal es un método estadístico que permite modelar la relación entre una variable dependiente (Y) y una o más variables independientes (X). El objetivo es encontrar una función lineal que mejor describa esta relación.</p>
+            <p>La regresión lineal es uno de los métodos estadísticos más utilizados en ciencias sociales, economía, ingeniería y ciencias naturales para analizar la relación entre una variable dependiente (también llamada variable de respuesta o explicada) y una o varias variables independientes (también denominadas predictoras o regresoras).</p>
+            <p>Su propósito principal es explicar y predecir el comportamiento de la variable dependiente a partir de las independientes. Este análisis permite identificar tendencias, estimar parámetros desconocidos y evaluar la influencia de diferentes factores sobre una variable de interés.</p>
             <p>En su forma más simple, la regresión lineal simple modela la relación entre dos variables mediante una línea recta, con la ecuación:</p>
             <p class="formula">Y = β₀ + β₁X + ε</p>
             <p>Donde:</p>
@@ -20,15 +21,49 @@
                 <li>β₁ es la pendiente</li>
                 <li>ε es el término de error</li>
             </ul>
+            <p>En contextos más complejos se utiliza la regresión lineal múltiple, donde se incluyen varias variables independientes:</p>
+             <p class="formula">Y = β₀ + β₁X₁ +β₂X₂+...+βₙXₙ+ ε</p>
+            <p>Esto permite estudiar simultáneamente el efecto de múltiples factores sobre la variable dependiente.</p>
         </div>
 
         <div class="concepto-section">
             <h2>Supuestos habituales</h2>
+            <p>Para que la regresión lineal sea estadísticamente válida y produzca estimaciones confiables e interpretaciones correctas, es necesario que se cumplan ciertos supuestos teóricos. Estos supuestos son la base del método de Mínimos Cuadrados Ordinarios (MCO), que se emplea para estimar los coeficientes 𝛽.</p>
             <ul>
-                <li><strong>Linealidad:</strong> La relación entre las variables independientes y dependientes es lineal.</li>
-                <li><strong>Independencia:</strong> Las observaciones son independientes entre sí.</li>
-                <li><strong>Homocedasticidad:</strong> La varianza de los errores es constante a lo largo de todos los valores de X.</li>
-                <li><strong>Normalidad:</strong> Los errores se distribuyen normalmente.</li>
+                <li><strong>Linealidad:</strong> </li>
+                <ul>
+                   <li>El modelo asume que la relación entre la variable dependiente y cada una de las independientes es lineal.</li> 
+                   <li>Si la relación es curva, exponencial o polinómica, el modelo lineal no será el más adecuado.</li>
+                   <li>Una violación de este supuesto puede llevar a predicciones sesgadas.</li>
+                   <li>Para verificarlo, se suelen usar:Gráficos de dispersión entre Y y cada X,Gráficos de residuos contra valores ajustados,Métodos de ajuste de polinomios o transformaciones (logaritmos, raíces, etc.)</li>
+                </u>
+                <li><strong>Independencia:</strong> </li>
+                    <ul>
+                    <li>Los errores (ε) deben ser independientes entre sí.</li>
+                    <li>Esto significa que el error de una observación no debe proporcionar información sobre el error de otra.</li>
+                    <li>La violación más común ocurre en datos temporales o espaciales, donde puede existir autocorrelación.</li>
+                    <li>Ejemplo: en un análisis de ventas mensuales, el error de enero puede estar relacionado con el de febrero.</li>
+                    <li>La prueba más usada para evaluar este supuesto es el estadístico de Durbin-Watson.</li>
+                    <li>Si no se cumple, se pueden emplear modelos para series temporales (como ARIMA) o ajustar errores estándar robustos.</li>
+                    </u>
+                    
+                <li><strong>Homocedasticidad:</strong> </li>
+                        <u>
+                            <li>Se espera que los errores tengan varianza constante a lo largo de los valores de X.</li>
+                            <li>En otras palabras, el grado de dispersión de los residuos debe ser similar en todo el rango de la variable independiente</li>
+                            <li>Cuando este supuesto se viola y la varianza de los errores cambia según el valor de X, se presenta heterocedasticidad</li>
+                            <li>Consecuencias de la heterocedasticidad:Los estimadores siguen siendo insesgados, pero dejan de ser eficientes,Los intervalos de confianza y pruebas de hipótesis pueden ser incorrectos. </li>
+                            <li>Se puede detectar mediante:Gráficos de residuos vs. valores ajustados,Pruebas estadísticas como Breusch-Pagan o White.</li>
+                            <li>En caso de heterocedasticidad, se pueden aplicar transformaciones (logaritmo, raíz cuadrada) o usar métodos robustos (MCO robustos, GLS).</li>
+                        </u>
+                <li><strong>Normalidad:</strong> </li>
+                        <u>
+                            <li>Se asume que los errores siguen una distribución normal con media cero.</li>
+                            <li>Este supuesto es clave cuando se desea realizar inferencia estadística, es decir:Construcción de intervalos de confianza,Realización de pruebas de hipótesis sobre los coeficientes.</li>
+                            <li>La normalidad no es tan crucial para la estimación de los coeficientes, pero sí para la validez de las pruebas estadísticas.</li>
+                            <li>Puede verificarse con: Histogramas de residuos,graficos Q-Q(Quamtile-Quantile) y Pruebas como Shapiro-Wilk, Kolmogorov-Smirnov o Jarque-Bera.</li>
+                            <li>Si no se cumple, se pueden usar métodos no paramétricos o transformaciones de variables.</li>
+                        </u>
                 <li><strong>No multicolinealidad:</strong> En regresión múltiple, las variables independientes no están altamente correlacionadas entre sí.</li>
             </ul>
         </div>
