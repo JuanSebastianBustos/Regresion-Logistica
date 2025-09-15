@@ -3,38 +3,52 @@
 {% block title %}Inicio - ML Supervisado{% endblock %}
 
 {% block content %}
-<section class="hero">
-    <div class="container">
-        <div class="hero-content">
-            <div class="logo-main">
-                <i class="fas fa-brain"></i> 
-                <h1>ML<span>Supervisado</span></h1>
-            </div>
-            <h2>Casos de Uso de <span>Machine Learning Supervisado</span></h2>
-            <p>Explora cómo el aprendizaje supervisado está transformando industrias y resolviendo problemas complejos en el mundo real.</p>
-        </div>
+<div class="px-4 py-5 my-5 text-center bg-dark text-white rounded-3 shadow-lg">
+    <div class="logo-main d-flex justify-content-center align-items-center mb-3">
+        <i class="fas fa-brain fa-3x me-3"></i> 
+        <h1 class="display-3 fw-bold">ML<span class="text-primary">Supervisado</span></h1>
     </div>
-</section>
+    <div class="col-lg-8 mx-auto">
+        <h2 class="h1 mb-4">Casos de Uso de <span class="text-primary">Machine Learning Supervisado</span></h2>
+        <p class="lead mb-4">
+            Explora cómo el aprendizaje supervisado está transformando industrias y resolviendo problemas complejos en el mundo real.
+        </p>
+    </div>
+</div>
 
-<section class="intro">
-    <div class="container">
-        <h2>¿Qué es el Machine Learning Supervisado?</h2>
-        <div class="intro-content">
-            <div class="intro-text">
-                <p>El aprendizaje supervisado es un tipo de machine learning donde los modelos son entrenados usando datos etiquetados. Estos algoritmos aprenden a mapear entradas a salidas basándose en ejemplos de entrada-salida.</p>
+<div class="container px-4 py-5" id="custom-cards">
+    <h2 class="pb-2 border-bottom">¿Qué es el Machine Learning Supervisado?</h2>
+    <p class="mt-3">
+        El aprendizaje supervisado es un tipo de machine learning donde los modelos son entrenados usando <strong>datos etiquetados</strong>. Estos algoritmos aprenden a mapear entradas a salidas basándose en ejemplos de entrada-salida.
+    </p>
+
+    <h2 class="pb-2 border-bottom mt-5">Nuestra Investigación</h2>
+    <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 py-5">
+        
+        <div class="col">
+            <div class="card card-cover h-100 overflow-hidden text-white bg-secondary rounded-4 shadow-lg">
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                    <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Análisis de Casos de Uso</h3>
+                    <p>Analizamos cuatro casos de uso relevantes en diferentes industrias donde el machine learning supervisado ha demostrado un impacto significativo.</p>
+                    <a href="{{ url_for('casos') }}" class="btn btn-light mt-auto">
+                        <i class="fas fa-project-diagram me-2"></i> Ver casos de estudio
+                    </a>
+                </div>
             </div>
         </div>
-        <h2>Trabajos</h2>
-        <div class="intro-content">
-            <div class="intro-text">
-                <p>En esta investigación, analizamos cuatro casos de uso relevantes en diferentes industrias donde el machine learning supervisado ha demostrado un impacto significativo.</p>
-                <a href="{{ url_for('casos') }}" class="btn">Ver casos de estudio</a>
-            </div>
-            <div class="intro-text">
-                <p>En esta investigación, revisaremos el primer algoritmo sinedo el de regresion lineal</p>
-                <a href="{{ url_for('rl') }}" class="btn">Ver caso regresion lineal</a>
+
+        <div class="col">
+            <div class="card card-cover h-100 overflow-hidden text-white bg-info rounded-4 shadow-lg">
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                    <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Algoritmos Fundamentales</h3>
+                    <p>Revisamos uno de los algoritmos más importantes y fundamentales del aprendizaje supervisado: la Regresión Lineal.</p>
+                    <a href="{{ url_for('rl') }}" class="btn btn-light mt-auto">
+                        <i class="fas fa-chart-line me-2"></i> Ver caso Regresión Lineal
+                    </a>
+                </div>
             </div>
         </div>
+
     </div>
-</section>
+</div>
 {% endblock %}
