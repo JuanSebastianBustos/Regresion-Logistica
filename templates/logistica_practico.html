@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}Ejercicio Práctico - Regresión Logística{% endblock %}
+
+{% block content %}
+<section class="logistica-practico">
+    <div class="container">
+        <h1>Ejercicio Práctico de Regresión Logística</h1>
+
+        <div class="dataset-info">
+            <h2>Dataset de Enfermedades Cardíacas</h2>
+            <p>
+                Este dataset contiene información médica de pacientes y se utiliza para predecir la presencia de enfermedades cardíacas. 
+                La variable objetivo es binaria: 1 indica presencia de enfermedad cardíaca, 0 indica ausencia.
+            </p>
+            
+            <h3>Variables del dataset:</h3>
+            <ul>
+                <li><strong>Age:</strong> Edad del paciente</li>
+                <li><strong>Cholesterol:</strong> Nivel de colesterol</li>
+                <li><strong>BloodPressure:</strong> Presión arterial</li>
+                <li><strong>Smoker:</strong> Si es fumador</li>
+                <li><strong>ExcersiseHours:</strong> Horas de ejercicio por semana</li>
+                <!-- Añadir más variables según el dataset -->
+            </ul>
+        </div>
+
+        <div class="metricas-evaluacion">
+            <h2>Métricas de Evaluación del Modelo</h2>
+            
+            <div class="metricas-container">
+                <div class="metrica-card">
+                    <h3>Exactitud</h3>
+                    <div class="metrica-valor">{{ accuracy }}</div>
+                    <p>Porcentaje de predicciones correctas</p>
+                </div>
+            </div>
+
+            <div class="reporte-clasificacion">
+                <h3>Reporte de Clasificación</h3>
+                <table class="reporte-table">
+                    <tr>
+                        <th>Clase</th>
+                        <th>Precision</th>
+                        <th>Recall</th>
+                        <th>F1-Score</th>
+                        <th>Support</th>
+                    </tr>
+                    {% for clase, metrics in report.items() %}
+                    <tr>
+                        <td>{{ clase }}</td>
+                        <td>{{ metrics.precision | default(0.0) | round(2) }}</td>
+                        <td>{{ metrics.recall | default(0.0) | round(2) }}</td>
+                        <td>{{ metrics['f1-score'] | default(0.0) | round(2) }}</td>
+                        <td>{{ metrics.support }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <div class="confusion-matrix">
+                <h3>Matriz de Confusión</h3>
+                <img src="data:image/png;base64,{{ matriz_url }}" alt="Matriz de Confusión">
+                <p>Real vs. Predicho (0: No Enfermedad, 1: Enfermedad)</p>
+            </div>
+        </div>
+
+        <div class="prediction-form">
+            <h2>Realizar Predicción</h2>
+            <form action="{{ url_for('logistica_practico') }}" method="post">
+                <div class="form-group">
+                    <label for="age">Edad:</label>
+                    <input type="number" name="age" required>
+                </div>
+                <div class="form-group">
+                    <label for="cholesterol">Colesterol:</label>
+                    <input type="number" name="cholesterol" required>
+                </div>
+                <div class="form-group">
+                    <label for="bloodPressure">Presion Sanguinea:</label>
+                    <input type="number" name="bloodPressure" required>
+                    </div>
+                    <div class="form-group">
+                    <label class="form-label">¿La persona fuma?</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="si-smoker" name="smoker" value="1" required>
+                            <label for="si-smoker" class="radio-btn-label btn-si">Sí</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="no-smoker" name="smoker" value="0" required>
+                            <label for="no-smoker" class="radio-btn-label btn-no">No</label>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="excersiseHours">Horas de ejercicio(a la semana):</label>
+                    <input type="number" name="excersiseHours" required>
+                </div>
+                <!-- Añadir más o menos campos según las variables del dataset -->
+                
+                <button type="submit" class="btn">Predecir</button>
+            </form>
+            
+            {% if prediction is not none %}
+            <div class="prediction-result-logistica">
+                <div class="prediction-text {% if prediction == 'Sí' %}prediction-yes{% else %}prediction-no{% endif %}">
+                    Predicción: {{ prediction }} es probable que tenga enfermedad cardíaca.
+                </div>
+                <div class="probability-text">
+                    Probabilidad: {{ probability | round(2) }}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

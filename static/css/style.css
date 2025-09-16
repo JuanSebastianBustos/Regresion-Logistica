@@ -101,7 +101,8 @@ nav {
     visibility: hidden;
     transform: translateY(10px);
     transition: all 0.3s;
-    z-index: 1000;
+    z-index: 1500;
+    display: block !important;
 }
 
 .nav-item:hover .submenu {
@@ -464,6 +465,10 @@ footer p {
     text-align: center;
 }
 
+.logistica-main .container h1 {
+    text-align: center;
+}
+
 .rl-intro {
     text-align: center;
     max-width: 800px;
@@ -553,10 +558,184 @@ footer p {
     font-size: 1rem;
 }
 
+.form-label {
+    font-weight: bold;
+    color: var(--dark-color);
+    margin-bottom: 10px;
+}
+
+/* Estilo para el contenedor del grupo de radios */
+.radio-group {
+    display: flex;
+    gap: 20px; /* Espacio entre los botones */
+    margin-top: 5px;
+}
+
+/* Esconder el input de radio original */
+.radio-option input[type="radio"] {
+    display: none;
+}
+
+/* Estilo de las etiquetas que simulan ser botones */
+.radio-btn-label {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent; /* Borde inicial transparente */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Estilo del botón "Sí" (borde y texto en color de éxito) */
+.radio-btn-label.btn-si {
+    color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+/* Estilo del botón "No" (borde y texto en color de acento) */
+.radio-btn-label.btn-no {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+/* Efecto al pasar el mouse por encima */
+.radio-btn-label:hover {
+    filter: brightness(0.95); /* Aclarar un poco el color */
+}
+
+/* Estado seleccionado: cuando el input de radio está marcado, su label cambia de estilo */
+.radio-option input[type="radio"]:checked + .radio-btn-label.btn-si {
+    background-color: var(--success-color);
+    color: var(--light-color);
+}
+
+.radio-option input[type="radio"]:checked + .radio-btn-label.btn-no {
+    background-color: var(--accent-color);
+    color: var(--light-color);
+}
+
 .prediction-result {
     margin-top: 2rem;
     padding: 1.5rem;
     background: var(--light-color);
     border-radius: 8px;
     text-align: center;
+}
+
+/* Estilos para Regresión Logística */
+.logistica-main {
+    padding: 3rem 0;
+}
+
+.logistica-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.logistica-options {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.logistica-conceptos {
+    padding: 3rem 0;
+}
+
+.logistica-practico {
+    padding: 3rem 0;
+}
+
+.metricas-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.metrica-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.metrica-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.metrica-valor {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.reporte-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.reporte-table th, .reporte-table td {
+    padding: 0.8rem;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.reporte-table th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.reporte-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.confusion-matrix {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.confusion-matrix img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.prediction-result-logistica {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--light-color);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.prediction-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.prediction-yes {
+    color: var(--accent-color);
+}
+
+.prediction-no {
+    color: var(--success-color);
+}
+
+.probability-text {
+    font-size: 1.1rem;
+    color: #666;
 }

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Conceptos Básicos - Regresión Logística{% endblock %}
+
+{% block content %}
+<section class="logistica-conceptos">
+    <div class="container">
+        <h1>Conceptos Básicos de Regresión Logística</h1>
+        
+        <div class="concepto-section">
+            <h2>Definición</h2>
+            <p>La regresión logística es un algoritmo de clasificación que se utiliza para predecir la probabilidad de que una observación pertenezca a una categoría específica. A diferencia de la regresión lineal, que predice valores continuos, la regresión logística predice probabilidades que luego se transforman en etiquetas de clase binarias (0/1, Sí/No).</p>
+            
+            <p>La función logística (también conocida como función sigmoide) transforma cualquier valor real en un rango entre 0 y 1:</p>
+            <p class="formula">σ(z) = 1 / (1 + e^(-z))</p>
+            
+            <p>Donde z es una combinación lineal de las variables independientes:</p>
+            <p class="formula">z = β₀ + β₁X₁ + β₂X₂ + ... + βₙXₙ</p>
+        </div>
+
+        <div class="references">
+            <h2>Referencias APA</h2>
+            <p>Hosmer, D. W., Lemeshow, S., & Sturdivant, R. X. (2013). Applied Logistic Regression (3rd ed.). John Wiley & Sons.</p>
+            <p>James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). An Introduction to Statistical Learning: with Applications in R. Springer.</p>
+            <p>Kleinbaum, D. G., & Klein, M. (2010). Logistic Regression: A Self-Learning Text (3rd ed.). Springer.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
