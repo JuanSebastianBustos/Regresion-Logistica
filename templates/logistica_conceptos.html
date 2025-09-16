@@ -3,27 +3,38 @@
 {% block title %}Conceptos Básicos - Regresión Logística{% endblock %}
 
 {% block content %}
-<section class="logistica-conceptos">
-    <div class="container">
-        <h1>Conceptos Básicos de Regresión Logística</h1>
-        
-        <div class="concepto-section">
-            <h2>Definición</h2>
-            <p>La regresión logística es un algoritmo de clasificación que se utiliza para predecir la probabilidad de que una observación pertenezca a una categoría específica. A diferencia de la regresión lineal, que predice valores continuos, la regresión logística predice probabilidades que luego se transforman en etiquetas de clase binarias (0/1, Sí/No).</p>
-            
-            <p>La función logística (también conocida como función sigmoide) transforma cualquier valor real en un rango entre 0 y 1:</p>
-            <p class="formula">σ(z) = 1 / (1 + e^(-z))</p>
-            
-            <p>Donde z es una combinación lineal de las variables independientes:</p>
-            <p class="formula">z = β₀ + β₁X₁ + β₂X₂ + ... + βₙXₙ</p>
-        </div>
+<div class="container py-5">
 
-        <div class="references">
-            <h2>Referencias APA</h2>
-            <p>Hosmer, D. W., Lemeshow, S., & Sturdivant, R. X. (2013). Applied Logistic Regression (3rd ed.). John Wiley & Sons.</p>
-            <p>James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). An Introduction to Statistical Learning: with Applications in R. Springer.</p>
-            <p>Kleinbaum, D. G., & Klein, M. (2010). Logistic Regression: A Self-Learning Text (3rd ed.). Springer.</p>
+    <h1 class="display-5 text-center mb-5">Conceptos Básicos de Regresión Logística</h1>
+
+    <div class="card shadow-sm mb-5 bg-dark border-secondary">
+        <div class="card-body p-4">
+            <h2 class="card-title h4">Definición</h2>
+            <p class="card-text text-white-50">La regresión logística es un algoritmo de clasificación que se utiliza para predecir la probabilidad de que una observación pertenezca a una categoría específica...</p>
+            <p class="card-text mt-3 text-white-50">La función logística (también conocida como función sigmoide) transforma cualquier valor real en un rango entre 0 y 1:</p>
+            
+            <div class="bg-black bg-opacity-25 border border-secondary rounded p-3 text-center my-3 text-white h5 font-monospace">
+                $$ \sigma(z) = \frac{1}{1 + e^{-z}} $$
+            </div>
+            
+            <p class="card-text text-white-50">Donde z es una combinación lineal de las variables independientes:</p>
+            
+            <div class="bg-black bg-opacity-25 border border-secondary rounded p-3 text-center my-3 text-white h5 font-monospace">
+                $$ z = \beta_0 + \beta_1X_1 + \beta_2X_2 + \dots + \beta_nX_n $$
+            </div>
         </div>
     </div>
-</section>
+
+    <div class="card shadow-sm bg-dark border-secondary">
+        <div class="card-header">
+            <h2 class="h5 mb-0">Referencias APA</h2>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item small bg-dark text-white-50">Hosmer, D. W., Lemeshow, S., & Sturdivant, R. X. (2013)...</li>
+            <li class="list-group-item small bg-dark text-white-50">James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013)...</li>
+            <li class="list-group-item small bg-dark text-white-50">Kleinbaum, D. G., & Klein, M. (2010)...</li>
+        </ul>
+    </div>
+
+</div>
 {% endblock %}
