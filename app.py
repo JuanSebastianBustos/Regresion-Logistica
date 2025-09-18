@@ -153,15 +153,14 @@ def logistica_practico():
     features = None
     
     if request.method == 'POST':
-        # Obtener valores del formulario (ajustar según las variables de tu dataset)
-        age = int(request.form['age'])
-        cholesterol = float(request.form['cholesterol'])
-        bloodPressure = float(request.form['bloodPressure'])
-        smoker = int(request.form['smoker'])
-        excersiseHours = int(request.form['excersiseHours'])
-        # ... otras variables según el dataset
+        # Obtener valores del formulario (ajustar según las variables del dataset)
+        horas_practica = float(request.form['horas_practica'])
+        experiencia_previa = int(request.form['experiencia_previa'])  # 0 = No, 1 = Sí
+        nota_media = float(request.form['nota_media'])
+        asistencia = float(request.form['asistencia'])
         
-        features = [age, cholesterol, bloodPressure, smoker, excersiseHours]  # Ajustar según variables
+        # Features en el mismo orden que en el dataset
+        features = [horas_practica, experiencia_previa, nota_media, asistencia]
         prediction, probability = RegresionLogistica.predict_label(features)
     
     return render_template(

@@ -18,8 +18,8 @@ print(data.info())
 print(data.describe())
 
 # Separar la variable dependiente y las independientes
-x = data.drop('HeartDisease', axis=1)  
-y = data['HeartDisease']  
+x = data.drop('Aprueba', axis=1)  
+y = data['Aprueba']  
 
 # Dividir el dataset en conjunto de entrenamiento y prueba
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42, stratify=y)
@@ -54,7 +54,7 @@ def evaluate():
     plt.ylabel('Actual')
     plt.title('Matriz de Confusión')
 
-        # Convertir matriz de confusión a imagen base64
+    # Convertir matriz de confusión a imagen base64
     img_buffer = BytesIO()
     plt.savefig(img_buffer, format='png')
     img_buffer.seek(0)
