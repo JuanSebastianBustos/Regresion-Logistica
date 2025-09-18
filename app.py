@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import RegresionLineal
+import RegresionLogistica
 
 
 app = Flask(__name__)
@@ -124,6 +125,52 @@ def rl_practico():
         result=result,
         autos=autos,
         transporte=transporte
+    )
+
+# Nuevas rutas para Regresión Logística
+@app.route('/logistica')
+def logistica():
+    return render_template('logistica_index.html')
+
+@app.route('/logistica_conceptos')
+def logistica_conceptos():
+    return render_template('logistica_conceptos.html')
+
+@app.route('/logistica_practico', methods=['GET', 'POST'])
+def logistica_practico():
+    # Obtener métricas de evaluación
+    accuracy, report, matriz_url = RegresionLogistica.evaluate()
+    
+    # Filtrar el reporte para excluir métricas no numéricas
+    report_clean = {
+        clase: metrics for clase, metrics in report.items() 
+        if isinstance(metrics, dict)
+    }
+    
+    # Variables para predicción
+    prediction = None
+    probability = None
+    features = None
+    
+    if request.method == 'POST':
+        # Obtener valores del formulario (ajustar según las variables del dataset)
+        horas_practica = float(request.form['horas_practica'])
+        experiencia_previa = int(request.form['experiencia_previa'])  # 0 = No, 1 = Sí
+        nota_media = float(request.form['nota_media'])
+        asistencia = float(request.form['asistencia'])
+        
+        # Features en el mismo orden que en el dataset
+        features = [horas_practica, experiencia_previa, nota_media, asistencia]
+        prediction, probability = RegresionLogistica.predict_label(features)
+    
+    return render_template(
+        'logistica_practico.html',
+        accuracy=accuracy,
+        report=report_clean,
+        matriz_url=matriz_url,
+        prediction=prediction,
+        probability=probability,
+        features=features
     )
 
 if __name__ == '__main__':

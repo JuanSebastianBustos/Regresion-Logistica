@@ -22,7 +22,7 @@
 
             <h3 class="h5">Regresión Lineal Simple</h3>
             <p>En su forma más simple, la regresión lineal simple modela la relación entre dos variables mediante una línea recta, con la ecuación:</p>
-            <div class="bg-light p-3 rounded text-center my-3">
+            <div class="bg-dark text-light p-3 rounded text-center my-3">
                 <p class="lead font-monospace">$$ Y = \beta_0 + \beta_1X + \epsilon $$</p>
             </div>
             
@@ -30,14 +30,14 @@
             <ul class="list-unstyled">
                 <li><strong>Y:</strong> es la variable dependiente.</li>
                 <li><strong>X:</strong> es la variable independiente.</li>
-                <li><strong>$$ \beta_0 $$:</strong> es el intercepto (el valor de Y cuando X es 0).</li>
-                <li><strong>$$ \beta_1 $$:</strong> es la pendiente (el cambio en Y por cada unidad de cambio en X).</li>
-                <li><strong>$$ \epsilon $$:</strong> es el término de error, que representa la variabilidad no explicada por el modelo.</li>
+                <li><strong>$ \beta_0 $:</strong> es el intercepto (el valor de Y cuando X es 0).</li>
+                <li><strong>$ \beta_1 $:</strong> es la pendiente (el cambio en Y por cada unidad de cambio en X).</li>
+                <li><strong>$ \epsilon $:</strong> es el término de error, que representa la variabilidad no explicada por el modelo.</li>
             </ul>
 
             <h3 class="h5 mt-4">Regresión Lineal Múltiple</h3>
             <p>En contextos más complejos se utiliza la regresión lineal múltiple, donde se incluyen varias variables independientes:</p>
-            <div class="bg-light p-3 rounded text-center my-3">
+            <div class="bg-dark text-light p-3 rounded text-center my-3">
                 <p class="lead font-monospace">$$ Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_nX_n + \epsilon $$</p>
             </div>
             <p>Esto permite estudiar simultáneamente el efecto de múltiples factores sobre la variable dependiente.</p>
@@ -49,7 +49,7 @@
             <h2 class="h4 mb-0">Supuestos Fundamentales del Modelo</h2>
         </div>
         <div class="card-body">
-            <p>Para que la regresión lineal sea estadísticamente válida y produzca estimaciones confiables, es necesario que se cumplan ciertos supuestos teóricos. Estos supuestos son la base del método de <strong>Mínimos Cuadrados Ordinarios (MCO)</strong>, que se emplea para estimar los coeficientes $$ \beta $$.</p>
+            <p>Para que la regresión lineal sea estadísticamente válida y produzca estimaciones confiables, es necesario que se cumplan ciertos supuestos teóricos. Estos supuestos son la base del método de <strong>Mínimos Cuadrados Ordinarios (MCO)</strong>, que se emplea para estimar los coeficientes $ \beta $.</p>
             
             <ul class="list-group list-group-flush mt-4">
                 <li class="list-group-item">
@@ -58,7 +58,7 @@
                 </li>
                 <li class="list-group-item">
                     <h5>2. Independencia de los Errores</h5>
-                    <p>Los errores ($$ \epsilon $$) deben ser independientes entre sí, lo que significa que el error de una observación no debe influir en el de otra. La violación común es la <strong>autocorrelación</strong> en series temporales y se puede evaluar con la prueba de <strong>Durbin-Watson</strong>.</p>
+                    <p>Los errores ($ \epsilon $) deben ser independientes entre sí, lo que significa que el error de una observación no debe influir en el de otra. La violación común es la <strong>autocorrelación</strong> en series temporales y se puede evaluar con la prueba de <strong>Durbin-Watson</strong>.</p>
                 </li>
                 <li class="list-group-item">
                     <h5>3. Homocedasticidad (Varianza Constante)</h5>
