@@ -1,40 +1,76 @@
-// Funcionalidad básica para el menú hamburguesa en dispositivos móviles
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-    const caso1Link = document.querySelector('/caso1');
-    const caso2Link = document.querySelector('/caso2');
-    const caso3Link = document.querySelector('/caso1');
-    const caso4Link = document.querySelector('/caso4');
+// Toast functionality
+function showToast(message, type = 'primary') {
+    const toastElement = document.getElementById('liveToast');
+    const toastMessage = document.getElementById('toastMessage');
+    const toast = new bootstrap.Toast(toastElement);
     
-    if (hamburger) {
-        hamburger.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            caso1Link.classList.toggle('active');
-            caso2Link.classList.toggle('active');
-            caso3Link.classList.toggle('active');
-            caso4Link.classList.toggle('active');
-        });
+    // Update message and style
+    toastMessage.textContent = message;
+    toastElement.className = `toast align-items-center text-bg-${type} border-0`;
+    
+    toast.show();
+}
+
+// Form validation helper
+function validateForm(formId) {
+    const form = document.getElementById(formId);
+    if (!form) return false;
+    
+    const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+    let isValid = true;
+    
+    inputs.forEach(input => {
+        input.classList.remove('is-invalid');
+        const feedback = input.parentNode.querySelector('.invalid-feedback');
+        if (feedback) feedback.remove();
+        
+        if (!input.value.trim()) {
+            input.classList.add('is-invalid');
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'invalid-feedback';
+            errorDiv.textContent = 'Este campo es requerido.';
+            input.parentNode.appendChild(errorDiv);
+            isValid = false;
+        }
+    });
+    
+    return isValid;
+}
+
+// Loading state for buttons
+function setLoadingState(buttonId, loading = true) {
+    const button = document.getElementById(buttonId);
+    if (!button) return;
+    
+    if (loading) {
+        button.disabled = true;
+        const originalText = button.innerHTML;
+        button.dataset.originalText = originalText;
+        button.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Procesando...';
+    } else {
+        button.disabled = false;
+        button.innerHTML = button.dataset.originalText || button.innerHTML;
     }
-    
-    // Smooth scrolling para los enlaces del submenú
-    document.querySelectorAll('.submenu-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-                
-                // Cerrar el menú móvil si está abierto
-                if (navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
-                }
-            }
-        });
+}
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Initialize tooltips
+document.addEventListener('DOMContentLoaded', function() {
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
     });
 });

@@ -74,4 +74,3 @@ def predict_label(features, threshold=0.5):
     prediction = "Sí" if probabilities[1] >= threshold else "No"
     
     return prediction, probabilities[1]
-
