@@ -1,0 +1,368 @@
+{% extends "base.html" %}
+
+{% block title %}Conceptos de Árboles de Decisión{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+        <h1 class="display-4">Árboles de Decisión</h1>
+        <p class="lead text-white-50">Conceptos fundamentales de uno de los algoritmos de clasificación más interpretables y versátiles.</p>
+    </div>
+
+    <!-- Mapa Conceptual -->
+    <div class="card bg-dark border-secondary shadow-sm mb-5">
+        <div class="card-header">
+            <h2 class="h4 mb-0">Mapa Conceptual</h2>
+        </div>
+        <div class="card-body text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <svg viewBox="0 0 800 600" class="w-100" style="max-height: 500px;">
+                        <!-- Nodo raíz -->
+                        <rect x="350" y="20" width="100" height="40" fill="#007bff" stroke="#fff" stroke-width="2" rx="5"/>
+                        <text x="400" y="45" text-anchor="middle" fill="white" font-size="12" font-weight="bold">ÁRBOLES DE DECISIÓN</text>
+                        
+                        <!-- Conceptos principales -->
+                        <rect x="50" y="120" width="120" height="30" fill="#28a745" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="110" y="140" text-anchor="middle" fill="white" font-size="10">Estructura de Árbol</text>
+                        
+                        <rect x="200" y="120" width="100" height="30" fill="#28a745" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="250" y="140" text-anchor="middle" fill="white" font-size="10">Nodos Internos</text>
+                        
+                        <rect x="330" y="120" width="80" height="30" fill="#28a745" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="370" y="140" text-anchor="middle" fill="white" font-size="10">Hojas</text>
+                        
+                        <rect x="440" y="120" width="100" height="30" fill="#28a745" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="490" y="140" text-anchor="middle" fill="white" font-size="10">División (Split)</text>
+                        
+                        <rect x="570" y="120" width="120" height="30" fill="#28a745" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="630" y="140" text-anchor="middle" fill="white" font-size="10">Criterios de División</text>
+                        
+                        <!-- Criterios -->
+                        <rect x="520" y="200" width="60" height="25" fill="#ffc107" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="550" y="217" text-anchor="middle" fill="black" font-size="9">Gini</text>
+                        
+                        <rect x="590" y="200" width="60" height="25" fill="#ffc107" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="620" y="217" text-anchor="middle" fill="black" font-size="9">Entropía</text>
+                        
+                        <rect x="660" y="200" width="80" height="25" fill="#ffc107" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="700" y="217" text-anchor="middle" fill="black" font-size="9">Ganancia Info.</text>
+                        
+                        <!-- Ventajas -->
+                        <rect x="50" y="280" width="150" height="30" fill="#17a2b8" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="125" y="300" text-anchor="middle" fill="white" font-size="10">VENTAJAS</text>
+                        
+                        <rect x="30" y="340" width="80" height="25" fill="#6c757d" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="70" y="357" text-anchor="middle" fill="white" font-size="9">Interpretable</text>
+                        
+                        <rect x="120" y="340" width="100" height="25" fill="#6c757d" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="170" y="357" text-anchor="middle" fill="white" font-size="9">No requiere escalado</text>
+                        
+                        <rect x="30" y="375" width="90" height="25" fill="#6c757d" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="75" y="392" text-anchor="middle" fill="white" font-size="9">Maneja faltantes</text>
+                        
+                        <rect x="130" y="375" width="90" height="25" fill="#6c757d" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="175" y="392" text-anchor="middle" fill="white" font-size="9">Variables mixtas</text>
+                        
+                        <!-- Desventajas -->
+                        <rect x="400" y="280" width="150" height="30" fill="#dc3545" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="475" y="300" text-anchor="middle" fill="white" font-size="10">DESVENTAJAS</text>
+                        
+                        <rect x="380" y="340" width="80" height="25" fill="#6c757d" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="420" y="357" text-anchor="middle" fill="white" font-size="9">Overfitting</text>
+                        
+                        <rect x="470" y="340" width="90" height="25" fill="#6c757d" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="515" y="357" text-anchor="middle" fill="white" font-size="9">Inestabilidad</text>
+                        
+                        <rect x="380" y="375" width="85" height="25" fill="#6c757d" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="422" y="392" text-anchor="middle" fill="white" font-size="9">Sesgos lineales</text>
+                        
+                        <rect x="475" y="375" width="85" height="25" fill="#6c757d" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="517" y="392" text-anchor="middle" fill="white" font-size="9">Datos ruidosos</text>
+                        
+                        <!-- Mejoras -->
+                        <rect x="600" y="280" width="150" height="30" fill="#6f42c1" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="675" y="300" text-anchor="middle" fill="white" font-size="10">MEJORAS</text>
+                        
+                        <rect x="580" y="340" width="80" height="25" fill="#6c757d" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="620" y="357" text-anchor="middle" fill="white" font-size="9">Poda</text>
+                        
+                        <rect x="670" y="340" width="90" height="25" fill="#6c757d" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="715" y="357" text-anchor="middle" fill="white" font-size="9">Random Forest</text>
+                        
+                        <rect x="580" y="375" width="85" height="25" fill="#6c757d" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="622" y="392" text-anchor="middle" fill="white" font-size="9">Boosting</text>
+                        
+                        <rect x="675" y="375" width="85" height="25" fill="#6c757d" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="717" y="392" text-anchor="middle" fill="white" font-size="9">Bagging</text>
+                        
+                        <!-- Hiperparámetros -->
+                        <rect x="50" y="450" width="150" height="30" fill="#fd7e14" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="125" y="470" text-anchor="middle" fill="white" font-size="10">HIPERPARÁMETROS</text>
+                        
+                        <rect x="30" y="510" width="80" height="25" fill="#6c757d" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="70" y="527" text-anchor="middle" fill="white" font-size="9">max_depth</text>
+                        
+                        <rect x="120" y="510" width="100" height="25" fill="#6c757d" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="170" y="527" text-anchor="middle" fill="white" font-size="9">min_samples_split</text>
+                        
+                        <rect x="30" y="545" width="90" height="25" fill="#6c757d" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="75" y="562" text-anchor="middle" fill="white" font-size="9">min_samples_leaf</text>
+                        
+                        <rect x="130" y="545" width="90" height="25" fill="#6c757d" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="175" y="562" text-anchor="middle" fill="white" font-size="9">class_weight</text>
+                        
+                        <!-- Aplicaciones -->
+                        <rect x="400" y="450" width="150" height="30" fill="#e83e8c" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="475" y="470" text-anchor="middle" fill="white" font-size="10">APLICACIONES</text>
+                        
+                        <rect x="380" y="510" width="80" height="25" fill="#6c757d" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="420" y="527" text-anchor="middle" fill="white" font-size="9">Medicina</text>
+                        
+                        <rect x="470" y="510" width="90" height="25" fill="#6c757d" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="515" y="527" text-anchor="middle" fill="white" font-size="9">Finanzas</text>
+                        
+                        <rect x="380" y="545" width="85" height="25" fill="#6c757d" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="422" y="562" text-anchor="middle" fill="white" font-size="9">Marketing</text>
+                        
+                        <rect x="475" y="545" width="85" height="25" fill="#6c757d" stroke="#fff" stroke-width="1" rx="3"/>
+                        <text x="517" y="562" text-anchor="middle" fill="white" font-size="9">Educación</text>
+                        
+                        <!-- Conexiones -->
+                        <line x1="400" y1="60" x2="110" y2="120" stroke="#fff" stroke-width="1"/>
+                        <line x1="400" y1="60" x2="250" y2="120" stroke="#fff" stroke-width="1"/>
+                        <line x1="400" y1="60" x2="370" y2="120" stroke="#fff" stroke-width="1"/>
+                        <line x1="400" y1="60" x2="490" y2="120" stroke="#fff" stroke-width="1"/>
+                        <line x1="400" y1="60" x2="630" y2="120" stroke="#fff" stroke-width="1"/>
+                        
+                        <line x1="630" y1="150" x2="550" y2="200" stroke="#fff" stroke-width="1"/>
+                        <line x1="630" y1="150" x2="620" y2="200" stroke="#fff" stroke-width="1"/>
+                        <line x1="630" y1="150" x2="700" y2="200" stroke="#fff" stroke-width="1"/>
+                        
+                        <line x1="125" y1="310" x2="70" y2="340" stroke="#fff" stroke-width="1"/>
+                        <line x1="125" y1="310" x2="170" y2="340" stroke="#fff" stroke-width="1"/>
+                        <line x1="125" y1="310" x2="75" y2="375" stroke="#fff" stroke-width="1"/>
+                        <line x1="125" y1="310" x2="175" y2="375" stroke="#fff" stroke-width="1"/>
+                        
+                        <line x1="475" y1="310" x2="420" y2="340" stroke="#fff" stroke-width="1"/>
+                        <line x1="475" y1="310" x2="515" y2="340" stroke="#fff" stroke-width="1"/>
+                        <line x1="475" y1="310" x2="422" y2="375" stroke="#fff" stroke-width="1"/>
+                        <line x1="475" y1="310" x2="517" y2="375" stroke="#fff" stroke-width="1"/>
+                        
+                        <line x1="675" y1="310" x2="620" y2="340" stroke="#fff" stroke-width="1"/>
+                        <line x1="675" y1="310" x2="715" y2="340" stroke="#fff" stroke-width="1"/>
+                        <line x1="675" y1="310" x2="622" y2="375" stroke="#fff" stroke-width="1"/>
+                        <line x1="675" y1="310" x2="717" y2="375" stroke="#fff" stroke-width="1"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Definición y concepto -->
+    <div class="row align-items-center mb-5">
+        <div class="col-lg-8">
+            <div class="card bg-dark border-secondary shadow-sm">
+                <div class="card-body p-4">
+                    <h2 class="card-title h4 border-bottom border-secondary pb-2 mb-3">¿Qué son los Árboles de Decisión?</h2>
+                    <p class="card-text text-white-50">
+                        Los árboles de decisión son algoritmos de <strong>aprendizaje supervisado</strong> que crean un modelo predictivo 
+                        mediante una estructura jerárquica similar a un árbol. Cada nodo interno representa una "pregunta" sobre una 
+                        característica, cada rama representa la respuesta a esa pregunta, y cada hoja representa una decisión final 
+                        o predicción de clase.
+                    </p>
+                    <p class="card-text text-white-50 mt-3">
+                        Su principal fortaleza radica en su <strong>interpretabilidad</strong>: el proceso de decisión es transparente 
+                        y puede ser fácilmente explicado a stakeholders no técnicos. Esto los convierte en una herramienta valiosa 
+                        para dominios donde la explicabilidad es crucial, como medicina, finanzas y justicia.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mt-4 mt-lg-0">
+            <blockquote class="blockquote bg-black bg-opacity-25 border-start border-primary border-4 ps-3 py-2">
+                <p class="mb-1 fst-italic">"Un árbol de decisión es una representación gráfica de todas las posibles soluciones a una decisión basada en ciertas condiciones."</p>
+                <footer class="blockquote-footer mt-2">Concepto fundamental</footer>
+            </blockquote>
+        </div>
+    </div>
+
+    <!-- Funcionamiento -->
+    <div class="card bg-dark border-secondary shadow-sm mb-5">
+        <div class="card-header">
+            <h2 class="h5 mb-0">¿Cómo Funcionan?</h2>
+        </div>
+        <div class="card-body p-4">
+            <div class="row">
+                <div class="col-md-6 border-end-md border-secondary">
+                    <h3 class="h5">Construcción del Árbol</h3>
+                    <ol class="text-white-50">
+                        <li><strong>Selección de característica:</strong> El algoritmo evalúa todas las características y selecciona la que mejor separa los datos según un criterio de impureza.</li>
+                        <li><strong>División (Split):</strong> Los datos se dividen en subconjuntos basados en el valor de la característica seleccionada.</li>
+                        <li><strong>Recursión:</strong> El proceso se repite para cada subconjunto hasta que se cumple un criterio de parada.</li>
+                        <li><strong>Asignación de clase:</strong> Cada hoja se etiqueta con la clase más frecuente en ese subconjunto.</li>
+                    </ol>
+                </div>
+                <div class="col-md-6 mt-4 mt-md-0 ps-md-4">
+                    <h3 class="h5">Criterios de División</h3>
+                    <ul class="list-unstyled text-white-50">
+                        <li class="mb-2">
+                            <strong>Índice de Gini:</strong><br>
+                            <code>$ Gini = 1 - \sum_{i=1}^{c} p_i^2 $</code><br>
+                            <small>Mide la impureza de un nodo. Valor 0 = puro, 0.5 = máxima impureza.</small>
+                        </li>
+                        <li class="mb-2">
+                            <strong>Entropía:</strong><br>
+                            <code>$ H = -\sum_{i=1}^{c} p_i \log_2(p_i) $</code><br>
+                            <small>Mide la cantidad de información necesaria para clasificar una muestra.</small>
+                        </li>
+                        <li>
+                            <strong>Ganancia de Información:</strong><br>
+                            <small>Reducción de entropía después de una división.</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Accordiones para contenido adicional -->
+    <div class="accordion" id="conceptosAdicionales">
+        <div class="accordion-item bg-dark border-secondary">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed bg-dark text-white shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <strong>Ventajas y Desventajas</strong>
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#conceptosAdicionales">
+                <div class="accordion-body text-white-50">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="text-success">Ventajas</h5>
+                            <ul>
+                                <li><strong>Interpretabilidad:</strong> Fáciles de entender y explicar.</li>
+                                <li><strong>No requieren escalado:</strong> Manejan variables numéricas y categóricas sin preprocesamiento.</li>
+                                <li><strong>Selección automática de características:</strong> Identifican las variables más importantes.</li>
+                                <li><strong>Manejo de valores faltantes:</strong> Pueden trabajar con datos incompletos.</li>
+                                <li><strong>Eficiencia computacional:</strong> Rápidos en entrenamiento y predicción.</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-danger">Desventajas</h5>
+                            <ul>
+                                <li><strong>Overfitting:</strong> Tendencia a memorizar datos de entrenamiento.</li>
+                                <li><strong>Inestabilidad:</strong> Pequeños cambios en datos pueden generar árboles muy diferentes.</li>
+                                <li><strong>Sesgo hacia características dominantes:</strong> Favorecen variables con más valores únicos.</li>
+                                <li><strong>Dificultad con relaciones lineales:</strong> No capturan bien patrones lineales simples.</li>
+                                <li><strong>Sensibilidad al ruido:</strong> Pueden crear divisiones espurias con datos ruidosos.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="accordion-item bg-dark border-secondary">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed bg-dark text-white shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <strong>Hiperparámetros Clave</strong>
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#conceptosAdicionales">
+                <div class="accordion-body text-white-50">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Control de Complejidad</h5>
+                            <ul>
+                                <li><strong>max_depth:</strong> Profundidad máxima del árbol. Controla directamente el overfitting.</li>
+                                <li><strong>min_samples_split:</strong> Mínimo de muestras requeridas para dividir un nodo interno.</li>
+                                <li><strong>min_samples_leaf:</strong> Mínimo de muestras requeridas en una hoja.</li>
+                                <li><strong>max_features:</strong> Número máximo de características a considerar para cada división.</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Otros Parámetros</h5>
+                            <ul>
+                                <li><strong>criterion:</strong> Función para medir la calidad de una división (gini, entropy).</li>
+                                <li><strong>class_weight:</strong> Pesos de las clases para manejar desbalance.</li>
+                                <li><strong>random_state:</strong> Semilla para reproducibilidad.</li>
+                                <li><strong>splitter:</strong> Estrategia para elegir la división (best, random).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="accordion-item bg-dark border-secondary">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed bg-dark text-white shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <strong>Aplicaciones y Mejoras</strong>
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#conceptosAdicionales">
+                <div class="accordion-body text-white-50">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Aplicaciones Comunes</h5>
+                            <ul>
+                                <li><strong>Medicina:</strong> Diagnóstico y apoyo a decisiones clínicas.</li>
+                                <li><strong>Finanzas:</strong> Evaluación de riesgo crediticio y detección de fraude.</li>
+                                <li><strong>Marketing:</strong> Segmentación de clientes y targeting.</li>
+                                <li><strong>Recursos Humanos:</strong> Selección de personal y evaluación de desempeño.</li>
+                                <li><strong>Educación:</strong> Predicción de rendimiento académico.</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Técnicas de Mejora</h5>
+                            <ul>
+                                <li><strong>Poda:</strong> Eliminación de ramas para reducir overfitting.</li>
+                                <li><strong>Random Forest:</strong> Ensemble de múltiples árboles.</li>
+                                <li><strong>Gradient Boosting:</strong> Construcción secuencial de árboles.</li>
+                                <li><strong>Bagging:</strong> Bootstrap aggregating para reducir varianza.</li>
+                                <li><strong>Extremely Randomized Trees:</strong> Mayor aleatoriedad en divisiones.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <!-- Referencias -->
+    <div class="card shadow-sm bg-dark border-secondary mt-5">
+        <div class="card-header">
+            <h2 class="h5 mb-0">Referencias</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="small text-white-50 mb-2">
+                        Breiman, L., Friedman, J., Stone, C. J., & Olshen, R. A. (1984). 
+                        <em>Classification and regression trees</em>. CRC press.
+                    </p>
+                    <p class="small text-white-50 mb-2">
+                        Quinlan, J. R. (1986). Induction of decision trees. 
+                        <em>Machine learning, 1</em>(1), 81-106.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p class="small text-white-50 mb-2">
+                        Hastie, T., Tibshirani, R., & Friedman, J. (2009). 
+                        <em>The elements of statistical learning: data mining, inference, and prediction</em> (2nd ed.). 
+                        Springer Science & Business Media.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-between my-4">
+        <a href="{{ url_for('dt_practico') }}" class="btn btn-primary d-flex align-items-center">
+            Caso Práctico
+            <i class="fas fa-arrow-right ms-2"></i>
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -16,6 +16,12 @@ except ImportError as e:
     print(f"Error importando RegresionLogistica: {e}")
     RegresionLogistica = None
 
+try:
+    import DecisionTrees
+except ImportError as e:
+    print(f"Error importando DecisionTrees: {e}")
+    DecisionTrees = None
+
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-key-change-in-production')
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file upload
@@ -51,11 +57,11 @@ def get_casos_uso():
             'id': 'educacion',
             'titulo': 'Modelo de predicción del éxito de Saber Pro (y trabajos relacionados).',
             'industria': 'Educación superior',
-            'problema': 'Identificar qué factores (académicos y socioeconómicos) influyen en que un estudiante obtenga resultado por encima del promedio en la prueba Saber Pro — utilidad para políticas educativas y detección temprana de riesgo académico.',
+            'problema': 'Identificar qué factores (académicos y socioeconómicos) influyen en que un estudiante obtenga resultado por encima del promedio en la prueba Saber Pro – utilidad para políticas educativas y detección temprana de riesgo académico.',
             'algoritmo': 'Árboles de decisión (CART) como modelo supervisado de clasificación; estudios relacionados en Colombia también usan redes neuronales, regresión logística y bosques aleatorios según el alcance.',
-            'beneficios': 'Identificación de variables influyentes, ej: puntaje en Saber 11 — especialmente la sección de Estudios Sociales —, características socioeconómicas y rasgos institucionales. Permite priorizar intervenciones educativas y diseñar estrategias de apoyo a estudiantes en riesgo. En estudios con grandes conjuntos de datos, ej: alrededor de 246.436 registros en análisis nacionales se obtuvieron modelos con rendimiento útil para análisis agregados y para decisiones institucionales.',
+            'beneficios': 'Identificación de variables influyentes, ej: puntaje en Saber 11 – especialmente la sección de Estudios Sociales –, características socioeconómicas y rasgos institucionales. Permite priorizar intervenciones educativas y diseñar estrategias de apoyo a estudiantes en riesgo. En estudios con grandes conjuntos de datos, ej: alrededor de 246.436 registros en análisis nacionales se obtuvieron modelos con rendimiento útil para análisis agregados y para decisiones institucionales.',
             'empresa': 'Trabajo académico de autores vinculados a Universidad EAFIT',
-            'referencias': 'Pérez Bernal, G., Toro Villegas, L., & Toro, M. (2020). Saber Pro success prediction model using decision tree based learning. arXiv. https://arxiv.org/abs/2006.01322.\nBernal, G. P., Villegas, L. T., & Toro, M. (2020). Saber Pro success prediction model using decision tree based learning. ResearchGate. https://www.researchgate.net/publication/341851879_Saber_Pro_success_prediction_model_using_decision_tree_based_learning.\nVanegas-Ayala, S. C., Leal-Lara, D. D., & Barón-Velandia, J. (2022). Predicción rendimiento estudiantes pruebas Saber Pro en pandemia junto con las características socioeconómicas. Revista TIA — Tecnología, Investigación y Academia, 9(2), 5-16. Recuperado de https://revistas.udistrital.edu.co/index.php/tia/article/download/19446/18260/116618.'
+            'referencias': 'Pérez Bernal, G., Toro Villegas, L., & Toro, M. (2020). Saber Pro success prediction model using decision tree based learning. arXiv. https://arxiv.org/abs/2006.01322.\nBernal, G. P., Villegas, L. T., & Toro, M. (2020). Saber Pro success prediction model using decision tree based learning. ResearchGate. https://www.researchgate.net/publication/341851879_Saber_Pro_success_prediction_model_using_decision_tree_based_learning.\nVanegas-Ayala, S. C., Leal-Lara, D. D., & Barón-Velandia, J. (2022). Predicción rendimiento estudiantes pruebas Saber Pro en pandemia junto con las características socioeconómicas. Revista TIA – Tecnología, Investigación y Academia, 9(2), 5-16. Recuperado de https://revistas.udistrital.edu.co/index.php/tia/article/download/19446/18260/116618.'
         },
         {
             'id': 'servicios',
@@ -89,7 +95,7 @@ def check_dataset_exists():
 # Manejadores de errores
 @app.errorhandler(404)
 def not_found_error(error):
-    return render_template('error.html', 
+    return render_template('pagina_error.html', 
                          error_title="Página no encontrada",
                          error_message="La página que buscas no existe.",
                          error_code=404), 404
@@ -97,14 +103,14 @@ def not_found_error(error):
 @app.errorhandler(500)
 def internal_error(error):
     logger.error(f'Server Error: {error}')
-    return render_template('error.html',
+    return render_template('pagina_error.html',
                          error_title="Error interno del servidor",
                          error_message="Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.",
                          error_code=500), 500
 
 @app.errorhandler(RequestEntityTooLarge)
 def too_large(error):
-    return render_template('error.html',
+    return render_template('pagina_error.html',
                          error_title="Archivo demasiado grande",
                          error_message="El archivo enviado supera el límite de tamaño permitido.",
                          error_code=413), 413
@@ -237,7 +243,7 @@ def logistica_practico():
     except Exception as e:
         logger.error(f'Error evaluando modelo de regresión logística: {e}')
         flash('Error al cargar las métricas del modelo.', 'error')
-        return redirect(url_for('logistica'))
+        return redirect(url_for('logistica_conceptos'))
 
     # Variables para predicción
     prediction = None
@@ -303,6 +309,139 @@ def logistica_practico():
         errors=errors
     )
 
+# Rutas de Árboles de Decisión
+
+@app.route('/dt_conceptos')
+def dt_conceptos():
+    return render_template('dt_conceptos.html')
+
+@app.route('/dt_practico', methods=['GET', 'POST'])
+def dt_practico():
+    if DecisionTrees is None:
+        flash('Error: Módulo de Árboles de Decisión no disponible.', 'error')
+        return redirect(url_for('index'))
+
+    try:
+        # Obtener métricas de evaluación
+        accuracy, report, matriz_url, tree_url = DecisionTrees.evaluate()
+        
+        # Obtener importancia de características
+        feature_importance = DecisionTrees.get_feature_importance()
+        
+        # Obtener información del dataset
+        dataset_info = DecisionTrees.dataset_info
+        
+        # Filtrar el reporte para excluir métricas no numéricas
+        report_clean = {
+            clase: metrics for clase, metrics in report.items() 
+            if isinstance(metrics, dict) and clase in ['0', '1']
+        }
+        
+    except Exception as e:
+        logger.error(f'Error evaluando modelo de árboles de decisión: {e}')
+        flash('Error al cargar las métricas del modelo.', 'error')
+        return redirect(url_for('dt_conceptos'))
+
+    # Variables para predicción
+    prediction = None
+    probability = None
+    threshold_interpretation = None
+    errors = {}
+
+    if request.method == 'POST':
+        try:
+            # Validar edad
+            edad_input = request.form.get('edad')
+            valid_edad, edad_result = validate_numeric_input(
+                edad_input, min_val=17, max_val=25, field_name="Edad"
+            )
+            
+            if not valid_edad:
+                errors['edad'] = edad_result
+
+            # Validar promedio secundaria
+            promedio_input = request.form.get('promedio_secundaria')
+            valid_promedio, promedio_result = validate_numeric_input(
+                promedio_input, min_val=2.0, max_val=5.0, field_name="Promedio de secundaria"
+            )
+            
+            if not valid_promedio:
+                errors['promedio_secundaria'] = promedio_result
+
+            # Validar ingresos familiares
+            ingresos_input = request.form.get('ingresos_familiares')
+            valid_ingresos, ingresos_result = validate_numeric_input(
+                ingresos_input, min_val=500000, max_val=5000000, field_name="Ingresos familiares"
+            )
+            
+            if not valid_ingresos:
+                errors['ingresos_familiares'] = ingresos_result
+
+            # Validar horas de estudio
+            horas_input = request.form.get('horas_estudio')
+            valid_horas, horas_result = validate_numeric_input(
+                horas_input, min_val=0, max_val=40, field_name="Horas de estudio"
+            )
+            
+            if not valid_horas:
+                errors['horas_estudio'] = horas_result
+
+            # Validar actividades extracurriculares
+            actividades_input = request.form.get('actividades_extra')
+            if actividades_input not in ['0', '1']:
+                errors['actividades_extra'] = "Debe seleccionar si participa en actividades extracurriculares"
+
+            # Validar soporte familiar
+            soporte_input = request.form.get('soporte_familiar')
+            if soporte_input not in ['0', '1']:
+                errors['soporte_familiar'] = "Debe seleccionar el nivel de soporte familiar"
+
+            # Validar threshold
+            threshold_input = request.form.get('threshold', '0.5')
+            try:
+                threshold = float(threshold_input)
+                if threshold < 0.1 or threshold > 0.9:
+                    errors['threshold'] = "El umbral debe estar entre 0.1 y 0.9"
+            except ValueError:
+                errors['threshold'] = "El umbral debe ser un número válido"
+                threshold = 0.5
+
+            # Si no hay errores, realizar predicción
+            if not errors:
+                features = [
+                    edad_result, 
+                    promedio_result, 
+                    ingresos_result, 
+                    horas_result, 
+                    int(actividades_input), 
+                    int(soporte_input)
+                ]
+                
+                prediction, probability = DecisionTrees.predict_label(features, threshold)
+                threshold_interpretation = DecisionTrees.get_threshold_interpretation(threshold)
+                flash('Predicción realizada exitosamente.', 'success')
+            else:
+                for field, error in errors.items():
+                    flash(error, 'error')
+
+        except Exception as e:
+            logger.error(f'Error en predicción de árboles de decisión: {e}')
+            flash('Error al procesar la predicción. Verifica los datos ingresados.', 'error')
+
+    return render_template(
+        'dt_practico.html',
+        accuracy=accuracy,
+        report=report_clean,
+        matriz_url=matriz_url,
+        tree_url=tree_url,
+        feature_importance=feature_importance,
+        dataset_info=dataset_info,
+        prediction=prediction,
+        probability=probability,
+        threshold_interpretation=threshold_interpretation,
+        errors=errors
+    )
+
 # API endpoints para AJAX (opcional)
 @app.route('/api/validate_field', methods=['POST'])
 def validate_field():
@@ -317,7 +456,11 @@ def validate_field():
         'nota_media': {'min': 0, 'max': 5, 'name': 'Nota media'},
         'asistencia': {'min': 0, 'max': 100, 'name': 'Asistencia'},
         'autos': {'min': 0, 'max': 10000, 'name': 'Número de autos'},
-        'transporte': {'min': 0, 'max': 100, 'name': 'Uso de transporte público'}
+        'transporte': {'min': 0, 'max': 100, 'name': 'Uso de transporte público'},
+        'edad': {'min': 17, 'max': 25, 'name': 'Edad'},
+        'promedio_secundaria': {'min': 2.0, 'max': 5.0, 'name': 'Promedio de secundaria'},
+        'ingresos_familiares': {'min': 500000, 'max': 5000000, 'name': 'Ingresos familiares'},
+        'horas_estudio': {'min': 0, 'max': 40, 'name': 'Horas de estudio'}
     }
     
     if field_name in validation_rules:
@@ -352,6 +495,9 @@ if __name__ == '__main__':
     
     if RegresionLogistica is None:
         missing_components.append("RegresionLogistica.py")
+        
+    if DecisionTrees is None:
+        missing_components.append("DecisionTrees.py")
         
     if not check_dataset_exists():
         missing_components.append("Datasets/data.csv")
