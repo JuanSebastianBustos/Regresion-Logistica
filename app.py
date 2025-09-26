@@ -315,6 +315,9 @@ def logistica_practico():
 def dt_conceptos():
     return render_template('dt_conceptos.html')
 
+#ruta para la parte práctica de árboles de decisión
+
+
 @app.route('/dt_practico', methods=['GET', 'POST'])
 def dt_practico():
     if DecisionTrees is None:
@@ -322,125 +325,65 @@ def dt_practico():
         return redirect(url_for('index'))
 
     try:
-        # Obtener métricas de evaluación
-        accuracy, report, matriz_url, tree_url = DecisionTrees.evaluate()
+        # Siempre evaluamos el modelo para tener las métricas base
+        resultados_eval = DecisionTrees.evaluate()
         
-        # Obtener importancia de características
-        feature_importance = DecisionTrees.get_feature_importance()
+        # Variables para la predicción
+        prediction_result = None
+        form_data = None
         
-        # Obtener información del dataset
-        dataset_info = DecisionTrees.dataset_info
-        
-        # Filtrar el reporte para excluir métricas no numéricas
-        report_clean = {
-            clase: metrics for clase, metrics in report.items() 
-            if isinstance(metrics, dict) and clase in ['0', '1']
-        }
+
+        # EN EL ARCHIVO: app.py
+# ASEGÚRATE DE QUE TU FUNCIÓN dt_practico TENGA ESTE BLOQUE 'POST':
+
+        if request.method == 'POST':
+            # Recoger datos del formulario
+            promedio = float(request.form['promedio_academico'])
+            ingresos = int(request.form['ingresos_familiares'])
+            personas = int(request.form['numero_personas_hogar'])
+            tipo_inst = int(request.form['tipo_institucion']) # Esto ya es 0 para Publica, 1 para Privada
+
+            # <<--- AÑADIDO: Guardamos los datos enviados en un diccionario
+            form_data = {
+                "promedio": promedio,
+                "ingresos": ingresos,
+                "personas": personas,
+                "tipo_inst": tipo_inst
+            }
+
+            # Llamamos a la función pasando los valores directamente en el orden correcto
+            pred_label, pred_prob = DecisionTrees.predict_label(promedio, ingresos, personas, tipo_inst)
+            
+            prediction_result = {
+                "label": pred_label,
+                "probability": f"{pred_prob:.4f}"
+            }
+
+        # Renderizar la plantilla con los resultados de la evaluación y la predicción (si existe)
+        return render_template(
+            'dt_practico.html',
+            accuracy=resultados_eval['accuracy'],
+            reporte=resultados_eval['reporte_dict'], # Pasamos el diccionario
+            matriz_url=resultados_eval['matriz_path'],
+            prediction=prediction_result, # Pasamos el resultado de la predicción
+            form_data=form_data # <<--- AÑADIDO: Pasamos los datos del formulario para mantenerlos en la UI
+        )
         
     except Exception as e:
-        logger.error(f'Error evaluando modelo de árboles de decisión: {e}')
-        flash('Error al cargar las métricas del modelo.', 'error')
+        # AÑADIMOS ESTAS LÍNEAS PARA VER EL ERROR EN LA TERMINAL
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        print(f"!!!!!!!!!!!!! ERROR ATRAPADO !!!!!!!!!!!!!!")
+        print(f"TIPO DE ERROR: {type(e).__name__}")
+        print(f"MENSAJE DE ERROR: {e}")
+        import traceback
+        traceback.print_exc() # Esto imprime el historial completo del error
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        
+        logging.error(f'Error en la ruta de árboles de decisión: {e}')
+        flash(f'Ocurrió un error inesperado: {e}', 'error')
         return redirect(url_for('dt_conceptos'))
 
-    # Variables para predicción
-    prediction = None
-    probability = None
-    threshold_interpretation = None
-    errors = {}
 
-    if request.method == 'POST':
-        try:
-            # Validar edad
-            edad_input = request.form.get('edad')
-            valid_edad, edad_result = validate_numeric_input(
-                edad_input, min_val=17, max_val=25, field_name="Edad"
-            )
-            
-            if not valid_edad:
-                errors['edad'] = edad_result
-
-            # Validar promedio secundaria
-            promedio_input = request.form.get('promedio_secundaria')
-            valid_promedio, promedio_result = validate_numeric_input(
-                promedio_input, min_val=2.0, max_val=5.0, field_name="Promedio de secundaria"
-            )
-            
-            if not valid_promedio:
-                errors['promedio_secundaria'] = promedio_result
-
-            # Validar ingresos familiares
-            ingresos_input = request.form.get('ingresos_familiares')
-            valid_ingresos, ingresos_result = validate_numeric_input(
-                ingresos_input, min_val=500000, max_val=5000000, field_name="Ingresos familiares"
-            )
-            
-            if not valid_ingresos:
-                errors['ingresos_familiares'] = ingresos_result
-
-            # Validar horas de estudio
-            horas_input = request.form.get('horas_estudio')
-            valid_horas, horas_result = validate_numeric_input(
-                horas_input, min_val=0, max_val=40, field_name="Horas de estudio"
-            )
-            
-            if not valid_horas:
-                errors['horas_estudio'] = horas_result
-
-            # Validar actividades extracurriculares
-            actividades_input = request.form.get('actividades_extra')
-            if actividades_input not in ['0', '1']:
-                errors['actividades_extra'] = "Debe seleccionar si participa en actividades extracurriculares"
-
-            # Validar soporte familiar
-            soporte_input = request.form.get('soporte_familiar')
-            if soporte_input not in ['0', '1']:
-                errors['soporte_familiar'] = "Debe seleccionar el nivel de soporte familiar"
-
-            # Validar threshold
-            threshold_input = request.form.get('threshold', '0.5')
-            try:
-                threshold = float(threshold_input)
-                if threshold < 0.1 or threshold > 0.9:
-                    errors['threshold'] = "El umbral debe estar entre 0.1 y 0.9"
-            except ValueError:
-                errors['threshold'] = "El umbral debe ser un número válido"
-                threshold = 0.5
-
-            # Si no hay errores, realizar predicción
-            if not errors:
-                features = [
-                    edad_result, 
-                    promedio_result, 
-                    ingresos_result, 
-                    horas_result, 
-                    int(actividades_input), 
-                    int(soporte_input)
-                ]
-                
-                prediction, probability = DecisionTrees.predict_label(features, threshold)
-                threshold_interpretation = DecisionTrees.get_threshold_interpretation(threshold)
-                flash('Predicción realizada exitosamente.', 'success')
-            else:
-                for field, error in errors.items():
-                    flash(error, 'error')
-
-        except Exception as e:
-            logger.error(f'Error en predicción de árboles de decisión: {e}')
-            flash('Error al procesar la predicción. Verifica los datos ingresados.', 'error')
-
-    return render_template(
-        'dt_practico.html',
-        accuracy=accuracy,
-        report=report_clean,
-        matriz_url=matriz_url,
-        tree_url=tree_url,
-        feature_importance=feature_importance,
-        dataset_info=dataset_info,
-        prediction=prediction,
-        probability=probability,
-        threshold_interpretation=threshold_interpretation,
-        errors=errors
-    )
 
 # API endpoints para AJAX (opcional)
 @app.route('/api/validate_field', methods=['POST'])
