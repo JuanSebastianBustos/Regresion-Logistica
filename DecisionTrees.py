@@ -1,4 +1,4 @@
-# Reemplaza el contenido de DecisionTrees.py con esto:
+
 
 import pandas as pd
 import seaborn as sns
@@ -9,7 +9,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from sklearn.preprocessing import LabelEncoder
 
-# Variables globales para no reentrenar innecesariamente
+
 model = None
 feature_columns = None
 le_target = None
@@ -44,8 +44,8 @@ def train_model_and_get_data():
     
     return X_test, y_test
 
-# EN EL ARCHIVO: DecisionTrees.py
-# REEMPLAZA LA FUNCIÓN evaluate COMPLETA CON ESTO:
+
+
 
 def evaluate():
     """
@@ -84,11 +84,7 @@ def evaluate():
     }
     return results
 
-# EN EL ARCHIVO: DecisionTrees.py
-# REEMPLAZA LA FUNCIÓN predict_label CON ESTO:
 
-# EN EL ARCHIVO: DecisionTrees.py
-# REEMPLAZA LA FUNCIÓN predict_label CON ESTO:
 
 def predict_label(promedio, ingresos, personas, tipo_inst_privada):
     """

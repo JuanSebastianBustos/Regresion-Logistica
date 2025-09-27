@@ -333,8 +333,7 @@ def dt_practico():
         form_data = None
         
 
-        # EN EL ARCHIVO: app.py
-# ASEGÚRATE DE QUE TU FUNCIÓN dt_practico TENGA ESTE BLOQUE 'POST':
+        
 
         if request.method == 'POST':
             # Recoger datos del formulario
@@ -343,7 +342,7 @@ def dt_practico():
             personas = int(request.form['numero_personas_hogar'])
             tipo_inst = int(request.form['tipo_institucion']) # Esto ya es 0 para Publica, 1 para Privada
 
-            # <<--- AÑADIDO: Guardamos los datos enviados en un diccionario
+            
             form_data = {
                 "promedio": promedio,
                 "ingresos": ingresos,
@@ -365,8 +364,8 @@ def dt_practico():
             accuracy=resultados_eval['accuracy'],
             reporte=resultados_eval['reporte_dict'], # Pasamos el diccionario
             matriz_url=resultados_eval['matriz_path'],
-            prediction=prediction_result, # Pasamos el resultado de la predicción
-            form_data=form_data # <<--- AÑADIDO: Pasamos los datos del formulario para mantenerlos en la UI
+            prediction=prediction_result,
+            form_data=form_data 
         )
         
     except Exception as e:
