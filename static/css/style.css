@@ -1,746 +1,447 @@
-/* Variables de colores */
-:root {
-    --primary-color: #2c3e50;
-    --secondary-color: #3498db;
-    --accent-color: #e74c3c;
-    --light-color: #ecf0f1;
-    --dark-color: #2c3e50;
-    --success-color: #27ae60;
-}
+/*Custom CSS (mínimo para branding)*/
 
-/* Estilos generales */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background-color: #f5f7fa;
-    color: #333;
-    line-height: 1.6;
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-
-
-/* Encabezado */
-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
-    color: white;
-    padding: 1rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: white;
-}
-
-.logo span {
-    color: var(--secondary-color);
-}
-
-/* Navegación */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-}
-
-.nav-item {
-    position: relative;
-    margin-left: 1.5rem;
-}
-
-.nav-link {
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 0;
-    display: flex;
-    align-items: center;
-    transition: color 0.3s;
-}
-
-.nav-link:hover {
-    color: var(--secondary-color);
-}
-
-.nav-link i {
-    margin-right: 0.5rem;
-}
-
-.submenu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: white;
-    width: 220px;
-    border-radius: 4px;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.3s;
-    z-index: 1500;
-    display: block !important;
-}
-
-.nav-item:hover .submenu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.submenu-item {
-    list-style: none;
-}
-
-.submenu-link {
-    display: block;
-    padding: 0.8rem 1rem;
-    color: var(--dark-color);
-    text-decoration: none;
-    transition: all 0.3s;
-    border-bottom: 1px solid #f1f1f1;
-}
-
-.submenu-link:hover {
-    background-color: #f9f9f9;
-    color: var(--secondary-color);
-    padding-left: 1.2rem;
-}
-
-/* Hero Section */
-.hero {
-    padding: 4rem 0;
-    background: linear-gradient(to right, #f5f7fa, #e4efe9);
-}
-
-.hero .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.hero-content {
-    flex: 1;
-    padding-right: 2rem;
-}
-
-.hero-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--dark-color);
-}
-
-.hero-content h1 span {
-    color: var(--secondary-color);
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    color: #555;
-}
-
-.hero-image {
-    flex: 1;
-    text-align: center;
-    font-size: 10rem;
-    color: var(--secondary-color);
-}
-
-.btn {
-    display: inline-block;
-    background: var(--secondary-color);
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s;
-}
-
-.btn:hover {
-    background: var(--primary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Intro Section */
-.intro {
-    padding: 4rem 0;
-    background: white;
-}
-
-.intro h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-    color: var(--dark-color);
-    font-size: 2rem;
-}
-
-.intro-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.intro-text {
-    flex: 2;
-    padding-right: 2rem;
-}
-
-.intro-text p {
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
-    line-height: 1.8;
-}
-
-.intro-stats {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.stat {
-    text-align: center;
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: #f9f9f9;
-    border-radius: 8px;
-    width: 100%;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-}
-
-.stat h3 {
-    font-size: 2.5rem;
-    color: var(--secondary-color);
-    margin-bottom: 0.5rem;
-}
-
-/* Cases Header */
-.cases-header {
-    padding: 2rem 0;
-    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-    color: white;
-    text-align: center;
-}
-
-.cases-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-/* Cases Container */
-.cases-container {
-    padding: 3rem 0;
-}
-
-.case-card {
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 2.5rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-}
-
-.case-card:hover {
-    transform: translateY(-5px);
-}
-
-.case-header {
-    padding: 1.5rem;
-    background: var(--primary-color);
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.navbar {
-    position: relative;
-    z-index: 1000;
-}
-
-.case-header h2 {
+.navbar-brand {
+    font-weight: 700;
     font-size: 1.5rem;
 }
 
-.industry-tag {
-    background: var(--secondary-color);
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
+.card-hover {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.case-content {
-    padding: 2rem;
+.card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
-.case-info h3, .case-references h3 {
-    color: var(--primary-color);
-    margin: 1.5rem 0 0.5rem;
+.btn-custom-primary {
+    background: linear-gradient(135deg, var(--primary-custom), var(--secondary-custom));
+    border: none;
+    font-weight: 500;
 }
 
-.case-info h3:first-child, .case-references h3:first-child {
-    margin-top: 0;
+.btn-custom-primary:hover {
+    background: linear-gradient(135deg, #1d4ed8, var(--primary-custom));
+    transform: translateY(-1px);
 }
 
-.case-info p, .case-references p {
-    margin-bottom: 1rem;
-    line-height: 1.6;
+.hero-section {
+    background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
 }
 
-.case-references {
-    background: #f9f9f9;
-    padding: 1.5rem;
-    border-radius: 6px;
-    margin-top: 1.5rem;
+.footer {
+    background: linear-gradient(135deg, #1f2937, #111827);
 }
 
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-custom);
+    box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25);
+}
 
+.text-primary-custom {
+    color: var(--primary-custom) !important;
+}
 
-/* Footer */
-footer {
-    background: var(--dark-color);
+.bg-primary-custom {
+    background-color: var(--primary-custom) !important;
+}
+
+/* Loading spinner personalizado */
+.spinner-custom {
+    color: var(--primary-custom);
+}
+
+/* Alert mejorados */
+.alert-custom {
+    border-left: 4px solid;
+    border-radius: 0.5rem;
+}
+
+.alert-custom.alert-success {
+    border-left-color: var(--success-custom);
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+.alert-custom.alert-danger {
+    border-left-color: var(--danger-custom);
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.alert-custom.alert-warning {
+    border-left-color: var(--warning-custom);
+    background-color: rgba(245, 158, 11, 0.1);
+}
+
+.definition-text p {
+  color: #212529 !important; /* Un gris muy oscuro #212529 */
+}
+
+/* 
+ * CSS Personalizado Mínimo para ML Supervisado
+ * Complementa Bootstrap 5 sin duplicar funcionalidades
+ */
+
+:root {
+    /* Variables personalizadas para branding */
+    --brand-primary: #2563eb;
+    --brand-secondary: #3b82f6;
+    --brand-success: #10b981;
+    --brand-warning: #f59e0b;
+    --brand-danger: #ef4444;
+    --brand-info: #06b6d4;
+    
+    /* Transiciones y animaciones */
+    --transition-fast: 0.15s ease-in-out;
+    --transition-normal: 0.25s ease-in-out;
+    --transition-slow: 0.35s ease-in-out;
+    
+    /* Sombras personalizadas */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ===========================================
+   COMPONENTES PERSONALIZADOS
+   =========================================== */
+
+/* Hover effects para cards */
+.card-hover {
+    transition: var(--transition-normal);
+    cursor: pointer;
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Botones personalizados con gradientes */
+.btn-gradient-primary {
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+    border: none;
     color: white;
-    padding: 2rem 0;
-    text-align: center;
+    font-weight: 500;
+    transition: var(--transition-normal);
 }
 
-footer p {
-    margin-bottom: 0.5rem;
+.btn-gradient-primary:hover {
+    background: linear-gradient(135deg, #1d4ed8, var(--brand-primary));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    color: white;
 }
 
-/* Estilos para página de caso individual */
-.case-detail {
-    padding: 3rem 0;
+/* Badges con animación pulse */
+.badge-pulse {
+    animation: pulse 2s infinite;
 }
 
-.case-header {
-    text-align: center;
-    margin-bottom: 2rem;
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
-.case-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+/* ===========================================
+   MEJORAS DE FORMULARIOS
+   =========================================== */
+
+/* Estilos mejorados para inputs con focus */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.15);
 }
 
-.case-content {
-    margin-bottom: 3rem;
+/* Labels con iconos */
+.form-label-icon {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
 }
 
-.case-image {
-    margin-bottom: 2rem;
-    text-align: center;
+.form-label-icon i {
+    margin-right: 0.5rem;
+    font-size: 0.9em;
 }
 
-.case-image img {
-    max-width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+/* Input groups mejorados */
+.input-group-text {
+    background-color: var(--bs-light);
+    border-color: var(--bs-border-color);
 }
 
-.image-caption {
-    font-style: italic;
-    color: #666;
-    margin-top: 0.5rem;
-    text-align: center;
+/* Radio buttons estilizados */
+.btn-check:checked + .btn-outline-success {
+    background-color: var(--brand-success);
+    border-color: var(--brand-success);
 }
 
-.case-info h2, .case-references h2 {
-    color: var(--primary-color);
-    margin: 1.5rem 0 0.5rem;
-    border-bottom: 2px solid var(--secondary-color);
-    padding-bottom: 0.5rem;
+.btn-check:checked + .btn-outline-danger {
+    background-color: var(--brand-danger);
+    border-color: var(--brand-danger);
 }
 
-.case-info p, .case-references p {
-    margin-bottom: 1rem;
-    line-height: 1.6;
-    font-size: 1.1rem;
+/* ===========================================
+   ALERTAS MEJORADAS
+   =========================================== */
+
+.alert-custom {
+    border-left: 4px solid;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
 }
 
-.case-references {
-    background: #f9f9f9;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-top: 2rem;
+.alert-custom.alert-success {
+    border-left-color: var(--brand-success);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
 }
 
-.case-navigation {
-    text-align: center;
-    margin-top: 3rem;
+.alert-custom.alert-danger {
+    border-left-color: var(--brand-danger);
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
 }
 
-.btn-next {
+.alert-custom.alert-warning {
+    border-left-color: var(--brand-warning);
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+}
+
+.alert-custom.alert-info {
+    border-left-color: var(--brand-info);
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(6, 182, 212, 0.05));
+}
+
+/* ===========================================
+   NAVEGACIÓN MEJORADA
+   =========================================== */
+
+/* Navbar brand con hover effect */
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    transition: var(--transition-fast);
+}
+
+.navbar-brand:hover {
+    transform: scale(1.02);
+}
+
+/* Dropdown mejorados */
+.dropdown-menu {
+    border: none;
+    box-shadow: var(--shadow-lg);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+.dropdown-item {
+    border-radius: 0.375rem;
+    padding: 0.5rem 1rem;
+    transition: var(--transition-fast);
+}
+
+.dropdown-item:hover {
+    background-color: var(--bs-primary);
+    color: white;
+    transform: translateX(4px);
+}
+
+/* ===========================================
+   COMPONENTES ESPECIALIZADOS ML
+   =========================================== */
+
+/* Métricas cards */
+.metric-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition-normal);
+}
+
+.metric-card:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Iconos circulares para métricas */
+.metric-icon {
+    width: 60px;
+    height: 60px;
     display: inline-flex;
     align-items: center;
-    background: var(--secondary-color);
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s;
-    margin-right: 1rem;
-}
-
-.btn-next:hover {
-    background: var(--primary-color);
-    transform: translateX(5px);
-}
-
-.btn-next i {
-    margin-left: 0.5rem;
-    transition: transform 0.3s;
-}
-
-.btn-next:hover i {
-    transform: translateX(5px);
-}
-
-/* Estilos adicionales para las nuevas secciones */
-
-.logo-main {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.logo-main i {
-    font-size: 4rem;
-    color: var(--secondary-color);
-}
-
-.logo-main h1 {
-    font-size: 2.5rem;
-    color: var(--dark-color);
-}
-
-.logo-main span {
-    color: var(--secondary-color);
-}
-
-.cases-overview {
-    padding: 3rem 0;
-    background: white;
-}
-
-.overview-stats {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 2rem;
-}
-
-.overview-content {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.rl-main {
-    padding: 3rem 0;
-}
-
-.rl-main .container h1 {
-    text-align: center;
-}
-
-.logistica-main .container h1 {
-    text-align: center;
-}
-
-.rl-intro {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.rl-options {
-    display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.rl-conceptos {
-    padding: 3rem 0;
-}
-
-.concepto-section {
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: #f9f9f9;
-    border-radius: 8px;
-}
-
-.concepto-section h2 {
-    color: var(--primary-color);
+    border-radius: 50%;
     margin-bottom: 1rem;
-}
-
-.formula {
-    font-family: 'Courier New', monospace;
-    background: #2d2d2d;
-    color: #f8f8f2;
-    padding: 1rem;
-    border-radius: 4px;
-    text-align: center;
-    margin: 1rem 0;
-}
-
-.references {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: #f9f9f9;
-    border-radius: 8px;
-}
-
-.rl-practico {
-    padding: 3rem 0;
-}
-
-.dataset-info {
-    margin-bottom: 3rem;
-}
-
-.plot-container {
-    text-align: center;
-    margin: 2rem 0;
-}
-
-.plot-container img {
-    max-width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.prediction-form {
-    background: #f9f9f9;
-    padding: 2rem;
-    border-radius: 8px;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-.form-label {
-    font-weight: bold;
-    color: var(--dark-color);
-    margin-bottom: 10px;
-}
-
-/* Estilo para el contenedor del grupo de radios */
-.radio-group {
-    display: flex;
-    gap: 20px; /* Espacio entre los botones */
-    margin-top: 5px;
-}
-
-/* Esconder el input de radio original */
-.radio-option input[type="radio"] {
-    display: none;
-}
-
-/* Estilo de las etiquetas que simulan ser botones */
-.radio-btn-label {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 5px;
-    cursor: pointer;
-    border: 2px solid transparent; /* Borde inicial transparente */
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-/* Estilo del botón "Sí" (borde y texto en color de éxito) */
-.radio-btn-label.btn-si {
-    color: var(--success-color);
-    border-color: var(--success-color);
-}
-
-/* Estilo del botón "No" (borde y texto en color de acento) */
-.radio-btn-label.btn-no {
-    color: var(--accent-color);
-    border-color: var(--accent-color);
-}
-
-/* Efecto al pasar el mouse por encima */
-.radio-btn-label:hover {
-    filter: brightness(0.95); /* Aclarar un poco el color */
-}
-
-/* Estado seleccionado: cuando el input de radio está marcado, su label cambia de estilo */
-.radio-option input[type="radio"]:checked + .radio-btn-label.btn-si {
-    background-color: var(--success-color);
-    color: var(--light-color);
-}
-
-.radio-option input[type="radio"]:checked + .radio-btn-label.btn-no {
-    background-color: var(--accent-color);
-    color: var(--light-color);
-}
-
-.prediction-result {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: var(--light-color);
-    border-radius: 8px;
-    text-align: center;
-}
-
-/* Estilos para Regresión Logística */
-.logistica-main {
-    padding: 3rem 0;
-}
-
-.logistica-intro {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.logistica-options {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.logistica-conceptos {
-    padding: 3rem 0;
-}
-
-.logistica-practico {
-    padding: 3rem 0;
-}
-
-.metricas-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.metrica-card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.metrica-card h3 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.metrica-valor {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--secondary-color);
-}
-
-.reporte-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1.5rem 0;
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-}
-
-.reporte-table th, .reporte-table td {
-    padding: 0.8rem;
-    text-align: center;
-    border: 1px solid #ddd;
-}
-
-.reporte-table th {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.reporte-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.confusion-matrix {
-    text-align: center;
-    margin: 2rem 0;
-}
-
-.confusion-matrix img {
-    max-width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.prediction-result-logistica {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: var(--light-color);
-    border-radius: 8px;
-    text-align: center;
-}
-
-.prediction-text {
     font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
 }
 
-.prediction-yes {
-    color: var(--accent-color);
+/* Progress bars personalizados */
+.progress-custom {
+    height: 8px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
-.prediction-no {
-    color: var(--success-color);
+.progress-custom .progress-bar {
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--brand-primary), var(--brand-secondary));
 }
 
-.probability-text {
-    font-size: 1.1rem;
-    color: #666;
+/* ===========================================
+   LOADING STATES
+   =========================================== */
+
+/* Loading overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-normal);
 }
+
+.loading-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Spinner personalizado */
+.spinner-custom {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(37, 99, 235, 0.3);
+    border-top: 4px solid var(--brand-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ===========================================
+   UTILIDADES ADICIONALES
+   =========================================== */
+
+/* Texto con gradiente */
+.text-gradient {
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+/* Scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Sombra de texto para mejorar legibilidad */
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Glassmorphism effect */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+}
+
+/* ===========================================
+   RESPONSIVIDAD ADICIONAL
+   =========================================== */
+
+/* Mejoras para tablets */
+@media (max-width: 992px) {
+    .card-hover:hover {
+        transform: none;
+    }
+    
+    .metric-card:hover {
+        transform: none;
+    }
+}
+
+/* Mejoras para móviles */
+@media (max-width: 768px) {
+    .btn-gradient-primary:hover {
+        transform: none;
+    }
+    
+    .navbar-brand:hover {
+        transform: none;
+    }
+    
+    .dropdown-item:hover {
+        transform: none;
+    }
+}
+
+/* ===========================================
+   MODO OSCURO ESPECÍFICO
+   =========================================== */
+
+[data-bs-theme="dark"] {
+    --bs-body-bg: #0d1117;
+    --bs-body-color: #f0f6fc;
+}
+
+[data-bs-theme="dark"] .card {
+    --bs-card-bg: #161b22;
+    border-color: #21262d;
+}
+
+[data-bs-theme="dark"] .navbar-dark {
+    --bs-navbar-brand-color: #f0f6fc;
+}
+
+[data-bs-theme="dark"] .alert-custom {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    color: var(--bs-body-color);
+}
+
+/* ===========================================
+   PRINT STYLES
+   =========================================== */
+
+@media print {
+    .navbar,
+    .footer,
+    .btn,
+    .card-hover {
+        display: none !important;
+    }
+    
+    .card {
+        box-shadow: none !important;
+        border: 1px solid #dee2e6 !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+}
+
+.min-vh-75 {
+    min-height: 75vh;
+}
+
